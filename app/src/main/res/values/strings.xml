@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Gee</string>
+    <string name="activity_name_acerca_de">Sobre Gee</string>
+
     <string name="app_titulo">GESTIÓN DE EVENTOS ENALLT</string>
     <string name="app_subtitulo">Congreso Internacional de Lenguas, Lingüística y Traducción</string>
 
@@ -11,7 +13,6 @@
     <string name="menu_item_otros">Otros</string>
     <string name="menu_item_acerca_de">Sobre Gee</string>
     <string name="menu_item_buscar">Buscar</string>
-
     <string name="busqueda_hint">Escribe un nombre</string>
     <string name="biodata_etiqueta">Biodata</string>
     <string name="biodata_texto">Parturient ridiculus elit vivamus hendrerit, malesuada potenti massa rutrum vehicula ac hymenaeos nullam semper elementum habitasse sollicitudin pede, posuere proin Maecenas. Iaculis sodales erat magna Aptent. Sociis Luctus commodo curae;, ut. Conubia eu senectus ridiculus elit tempor penatibus turpis. Pharetra magna erat eget mauris viverra dui, dolor, class congue lobortis lacus dui egestas at Potenti, tempus ad in magnis justo duis mollis. Arcu ullamcorper hymenaeos ligula platea torquent auctor vehicula aptent porttitor malesuada eu suspendisse fermentum. Ullamcorper est mi nam dui nibh dictum dui rhoncus. Urna rutrum ac gravida risus primis nisl. Condimentum nisl ultricies feugiat laoreet facilisi nam mauris.</string>
@@ -19,4 +20,10 @@
     <string name="calidad_ponencia_etiqueta">Calidad de la ponencia</string>
     <string name="experiencia_ponente_etiqueta">Experiencia del ponente</string>
     <string name="relevancia_ponencia_etiqueta">Relevancia de la ponencia</string>
+    <string name="app_version">Versión 0.1.0</string>
+    <string name="descripcion_acerca_de">GEE es una aplicación para la gestión de eventos académicos en la Escuela Nacional de Lenguas, Lingüística y Traducción de la UNAM. </string>
+    <string name="copyright">© 2018 Escuela Nacional de Lenguas, Lingüística y Traducción</string>
+    <string name="desarrolladores_acerca_de">Lic. Emmanuel Antonio García Carrillo\nM. en C. Román Alvar Sánchez Garcia\nIng. José Luis Vázquez Torres</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

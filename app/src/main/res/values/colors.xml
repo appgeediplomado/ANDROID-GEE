@@ -5,4 +5,8 @@
     <color name="colorAccent">#d81b60</color>
     <color name="colorUNAM">#7e6208</color>
     <color name="colorSeparador">#bbc1cc</color>
+    <color name="colorTextPrimary">#001928</color>
+    <color name="colorTextPrimaryDark">#004168</color>
+    <color name="colorTextAccent">#7E6208</color>
+    <color name="colorTextGris">#555555</color>
 </resources>

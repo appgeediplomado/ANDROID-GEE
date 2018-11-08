@@ -33,6 +33,13 @@
             android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.PonenciaDetalleActivity" />
         <activity android:name=".activities.PonenciaEvaluacionActivity"></activity>
+            android:label="@string/activity_name_acerca_de"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.UbicacionActivity"
+            android:label="Ubicación - ENALLT" />
+        <activity android:name=".activities.DetallesAsistenciaActivity"
+            android:label="Detalles de asistencia" />
     </application>
 
 </manifest>

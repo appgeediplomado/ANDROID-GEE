@@ -13,4 +13,18 @@
     <style name="MainTheme" parent="AppTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="AppTheme.FloatingLabel" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorTextAccent</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="EditText" parent="AppTheme">
+        <item name="android:textSize">12sp</item>
+        <!--cursor y línea normal-->
+        <item name="colorControlNormal">@color/colorTextPrimary</item>
+        <!--cursor y línea con foco-->
+        <item name="colorControlActivated">@color/colorTextAccent</item>
+    </style>
+
 </resources>
