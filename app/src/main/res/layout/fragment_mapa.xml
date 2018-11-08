@@ -14,7 +14,7 @@
         android:text="ENALLT - Edificio A"
         android:paddingVertical="6dp"
         android:paddingHorizontal="10dp"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:background="@color/colorTextPrimaryDark"
         android:textColor="@android:color/white" />
     <TextView
@@ -24,7 +24,7 @@
         android:text="Planta baja"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <View
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:text="Primer piso"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <View
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:text="Tercer piso"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <TextView
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         android:text="ENALLT - Edificio B"
         android:paddingVertical="6dp"
         android:paddingHorizontal="10dp"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:background="@color/colorTextPrimaryDark"
         android:textColor="@android:color/white" />
     <TextView
@@ -68,7 +68,7 @@
         android:text="Basamento"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <View
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
         android:text="Planta baja"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <View
         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
         android:text="Primer piso"
         android:paddingVertical="5dp"
         android:paddingHorizontal="10dp"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextPrimary"/>
     <View
         android:layout_width="match_parent"
