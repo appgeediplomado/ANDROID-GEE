@@ -12,6 +12,13 @@
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/MainTheme">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +27,12 @@
         </activity>
         <activity
             android:name=".activities.AcercaDeActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.PonenteDetallesActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.PonenciaDetalleActivity" />
+        <activity android:name=".activities.PonenciaEvaluacionActivity"></activity>
             android:label="@string/activity_name_acerca_de"
             android:parentActivityName=".activities.MainActivity" />
         <activity
