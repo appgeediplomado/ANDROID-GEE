@@ -7,36 +7,29 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.appgee.proyectoandroid.R;
-import com.appgee.proyectoandroid.models.Ponente;
+import com.appgee.proyectoandroid.models.Ponencia;
 
-public class PonenteDetallesActivity extends AppCompatActivity {
+public class PonenciaEvaluacionActivity extends AppCompatActivity {
     Toolbar toolbar;
-    TextView tvNombre;
-    TextView tvApellidos;
-    TextView tvInstitucion;
-
-    Ponente ponente = null;
+    TextView tvPonenciaTitulo;
+    Ponencia ponencia = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponente_detalles);
+        setContentView(R.layout.activity_ponencia_evaluacion);
 
         toolbar = findViewById(R.id.toolbar_other);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
-        getSupportActionBar().setTitle("Ponente");
+        getSupportActionBar().setTitle("Evaluación");
 
-        tvNombre = findViewById(R.id.tv_nombre_det);
-        tvApellidos = findViewById(R.id.tv_apellidos_det);
-        tvInstitucion = findViewById(R.id.tv_institucion_det);
+        tvPonenciaTitulo = findViewById(R.id.tvEvaluacionPonenciaTitulo);
 
-        ponente = (Ponente) getIntent().getSerializableExtra("ponente");
+        ponencia = (Ponencia) getIntent().getSerializableExtra("ponencia");
 
-        if (ponente != null) {
-            tvNombre.setText(ponente.getNombre());
-            tvApellidos.setText(ponente.getApellidos());
-            tvInstitucion.setText(ponente.getInstitucion());
+        if (ponencia != null) {
+            tvPonenciaTitulo.setText(ponencia.getTitulo());
         }
     }
 

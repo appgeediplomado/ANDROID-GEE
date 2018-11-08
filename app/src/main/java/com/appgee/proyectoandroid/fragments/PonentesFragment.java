@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.activities.PonenteDetallesActivity;
 import com.appgee.proyectoandroid.adapters.PonenteAdapter;
+import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.listeners.OnPonenteClickListener;
 import com.appgee.proyectoandroid.models.Ponente;
 
@@ -83,7 +84,7 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
         //Lista seccionada alfabeticamente y buscable | Basado en:
         //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
         //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
-        ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(getPonentes())));
+        ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(Interactor.obtenerPonentes())));
         ponenteAdapter.setOnPonenteClickListener(this);
         ponentesRecyclerView.setAdapter(ponenteAdapter);
 
@@ -164,17 +165,6 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
         Intent intent = new Intent(getActivity(), PonenteDetallesActivity.class);
         intent.putExtra("ponente", ponente);
         startActivity(intent);
-
-        //Al dar clic en un elemento de la lista, reemplazamos el fragmento
-        //y agregamos este fragment al backstack para poder regresar a la lista
-        //addToBackSatck (!)importante
-/*
-        getActivity().getSupportFragmentManager()
-                .beginTransaction().replace(R.id.mainContainer,
-                PonenteDetalleFragment.newInstance(ponente), "DETAIL_TAG")
-                .addToBackStack(null)
-                .commit();
-*/
     }
 
     ArrayList<Ponente> sortList(ArrayList<Ponente> list) {

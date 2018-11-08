@@ -30,6 +30,9 @@
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.PonenteDetallesActivity"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.PonenciaDetalleActivity" />
+        <activity android:name=".activities.PonenciaEvaluacionActivity"></activity>
     </application>
+
 </manifest>
