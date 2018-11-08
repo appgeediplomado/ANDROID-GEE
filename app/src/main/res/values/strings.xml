@@ -12,8 +12,6 @@
     <string name="menu_item_otros">Otros</string>
     <string name="menu_item_acerca_de">Sobre Gee</string>
 
-    <string name="ENALLT"></string>
-
     <string name="app_version">Versión 0.1.0</string>
     <string name="descripcion_acerca_de">GEE es una aplicación para la gestión de eventos académicos en la Escuela Nacional de Lenguas, Lingüística y Traducción de la UNAM. </string>
     <string name="copyright">© 2018 Escuela Nacional de Lenguas, Lingüística y Traducción</string>
