@@ -15,7 +15,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/ivLogoGee"
         android:layout_width="100dp"

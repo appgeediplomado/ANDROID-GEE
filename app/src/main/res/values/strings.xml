@@ -19,6 +19,5 @@
     <string name="copyright">© 2018 Escuela Nacional de Lenguas, Lingüística y Traducción</string>
     <string name="desarrolladores_acerca_de">Lic. Emmanuel Antonio García Carrillo\nM. en C. Román Alvar Sánchez Garcia\nIng. José Luis Vázquez Torres</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
