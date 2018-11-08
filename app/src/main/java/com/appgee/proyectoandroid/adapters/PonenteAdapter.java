@@ -45,11 +45,6 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.ponente_item_lista,parent,false);
-        //PonenteViewHolder contactViewHolder = new PonenteViewHolder(item);
-        //contactViewHolder.setOnPonenteClickListener(onPonenteClickListener);
-        //return contactViewHolder;
-
         LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
 
         switch (viewType) {
