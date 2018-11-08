@@ -2,6 +2,7 @@
     <string name="app_name">Gee</string>
     <string name="app_titulo">GESTIÓN DE EVENTOS ENALLT</string>
     <string name="app_subtitulo">Congreso Internacional de Lenguas, Lingüística y Traducción</string>
+
     <string name="menu_item_inicio">Inicio</string>
     <string name="menu_item_programa">Programa</string>
     <string name="menu_item_ponentes">Ponentes</string>
@@ -9,7 +10,7 @@
     <string name="menu_item_mapa">Mapa del lugar</string>
     <string name="menu_item_otros">Otros</string>
     <string name="menu_item_acerca_de">Sobre Gee</string>
+    <string name="menu_item_buscar">Buscar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="busqueda_hint">Escribe un nombre</string>
 </resources>
