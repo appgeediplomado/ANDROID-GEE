@@ -66,21 +66,22 @@
         android:textColor="@color/colorTextPrimaryDark"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvDetallesAsistencia"
+        app:layout_constraintBottom_toTopOf="@+id/btnDetallesAsistencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNombreEvento" />
 
-    <TextView
-        android:id="@+id/tvDetallesAsistencia"
+    <Button
+        android:id="@+id/btnDetallesAsistencia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="Ver detalles de asistencia"
-        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/colorTextPrimaryDark"
+        android:background="@android:color/transparent"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
