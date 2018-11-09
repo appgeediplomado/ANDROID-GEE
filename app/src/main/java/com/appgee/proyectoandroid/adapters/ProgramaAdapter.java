@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.activities.PonenciaDetalleActivity;
 import com.appgee.proyectoandroid.activities.PonenciaEvaluacionActivity;
 import com.appgee.proyectoandroid.models.Ponencia;
-import com.appgee.proyectoandroid.models.Ponente;
 
 import java.util.List;
 
@@ -61,6 +61,13 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
                 view.getContext().startActivity(intent);
             }
         });
+        
+        viewHolder.btnPonenciaAgendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -87,17 +94,19 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         TextView tvLugar;
         TextView tvModalidad;
         ImageButton btnPonenciaCalificar;
+        ImageButton btnPonenciaAgendar;
 
         public PonenciaViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvTitulo = itemView.findViewById(R.id.tvPonenciaTitulo);
             tvNombrePonente = itemView.findViewById(R.id.tvPonenciaNombrePonente);
-            tvFecha = itemView.findViewById(R.id.tvPonenciaFecha);
-            tvHora = itemView.findViewById(R.id.tvPonenciaHora);
-            tvLugar = itemView.findViewById(R.id.tvPonenciaLugar);
+            tvFecha = itemView.findViewById(R.id.tvFechaPonencia);
+            tvHora = itemView.findViewById(R.id.tvHoraPonencia);
+            tvLugar = itemView.findViewById(R.id.tvLugarPonencia);
             tvModalidad = itemView.findViewById(R.id.tvPonenciaModalidad);
-            btnPonenciaCalificar = itemView.findViewById(R.id.btnPonenciaCalificar);
+            btnPonenciaCalificar = itemView.findViewById(R.id.btnCalificarPonencia);
+            btnPonenciaAgendar = itemView.findViewById(R.id.btnPonenciaAgendar);
         }
     }
 }
