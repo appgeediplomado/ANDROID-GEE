@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.models.Ponencia;
@@ -12,6 +15,7 @@ import com.appgee.proyectoandroid.models.Ponencia;
 public class PonenciaEvaluacionActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView tvPonenciaTitulo;
+    Button btnEvaluacionPonenciaCalificar;
     Ponencia ponencia = null;
 
     @Override
@@ -25,11 +29,18 @@ public class PonenciaEvaluacionActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Evaluación");
 
         tvPonenciaTitulo = findViewById(R.id.tvEvaluacionPonenciaTitulo);
+        btnEvaluacionPonenciaCalificar = findViewById(R.id.btnEvaluacionPonenciaCalificar);
 
         ponencia = (Ponencia) getIntent().getSerializableExtra("ponencia");
 
         if (ponencia != null) {
             tvPonenciaTitulo.setText(ponencia.getTitulo());
+            btnEvaluacionPonenciaCalificar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(PonenciaEvaluacionActivity.this, "This is just a demo!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
