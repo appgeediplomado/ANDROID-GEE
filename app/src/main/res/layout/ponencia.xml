@@ -34,7 +34,7 @@
             tools:text="Nombre del ponente" />
 
         <TextView
-            android:id="@+id/tvPonenciaFecha"
+            android:id="@+id/tvFechaPonencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -50,21 +50,21 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPonenciaFecha"
+            app:layout_constraintTop_toBottomOf="@+id/tvFechaPonencia"
             app:srcCompat="@drawable/ic_clock" />
 
         <TextView
-            android:id="@+id/tvPonenciaHora"
+            android:id="@+id/tvHoraPonencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toEndOf="@+id/imgClock"
-            app:layout_constraintTop_toBottomOf="@+id/tvPonenciaFecha"
+            app:layout_constraintTop_toBottomOf="@+id/tvFechaPonencia"
             tools:text="Hora de la ponencia" />
 
         <TextView
-            android:id="@+id/tvPonenciaLugar"
+            android:id="@+id/tvLugarPonencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -82,22 +82,22 @@
             android:textColor="@color/colorUNAM"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPonenciaLugar"
+            app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia"
             tools:text="Modalidad de la ponencia" />
 
         <ImageButton
-            android:id="@+id/btnPonenciaAgregarCalendario"
+            android:id="@+id/btnPonenciaAgendar"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
             android:elevation="4dp"
             android:scaleType="fitCenter"
-            app:layout_constraintEnd_toStartOf="@+id/btnPonenciaCalificar"
+            app:layout_constraintEnd_toStartOf="@+id/btnCalificarPonencia"
             app:layout_constraintTop_toBottomOf="@+id/tvPonenciaModalidad"
             app:srcCompat="@drawable/ic_calendario_agregar" />
 
         <ImageButton
-            android:id="@+id/btnPonenciaCalificar"
+            android:id="@+id/btnCalificarPonencia"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"

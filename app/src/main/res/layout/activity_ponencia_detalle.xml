@@ -16,7 +16,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <TextView
-        android:id="@+id/tvDetallesPonenciaTitulo"
+        android:id="@+id/tvTituloPonencia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,18 +37,18 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetallesPonenciaTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloPonencia"
         app:srcCompat="@drawable/ic_programa" />
 
     <TextView
-        android:id="@+id/tvPonenciaFecha"
+        android:id="@+id/tvFechaPonencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetallesPonenciaTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloPonencia"
         tools:text="Fecha de la ponencia" />
 
     <ImageView
@@ -58,18 +58,18 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPonenciaFecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaPonencia"
         app:srcCompat="@drawable/ic_clock" />
 
     <TextView
-        android:id="@+id/tvPonenciaHora"
+        android:id="@+id/tvHoraPonencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/tvPonenciaFecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaPonencia"
         tools:text="Hora de la @string/calidad_ponencia_etiqueta" />
 
     <ImageView
@@ -83,14 +83,14 @@
         app:srcCompat="@drawable/ic_mapa" />
 
     <TextView
-        android:id="@+id/tvPonenciaLugar"
+        android:id="@+id/tvLugarPonencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/tvPonenciaHora"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraPonencia"
         tools:text="Lugar de la ponencia|" />
 
     <ImageView
@@ -104,17 +104,19 @@
         app:srcCompat="@drawable/ic_calificar" />
 
     <Button
-        android:id="@+id/btnPonenciaCalificar"
-        android:layout_width="144dp"
+        android:id="@+id/btnCalificarPonencia"
+        android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:text="@string/boton_evaluacion_calificar"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/tvPonenciaLugar" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
 
     <TextView
         android:id="@+id/textView7"
@@ -187,5 +189,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia"
+        app:srcCompat="@drawable/ic_right_indicator" />
 
 </android.support.constraint.ConstraintLayout>
