@@ -15,7 +15,10 @@
     <string name="menu_item_buscar">Buscar</string>
     <string name="busqueda_hint">Escribe un nombre</string>
     <string name="biodata_etiqueta">Biodata</string>
-    <string name="biodata_texto">Parturient ridiculus elit vivamus hendrerit, malesuada potenti massa rutrum vehicula ac hymenaeos nullam semper elementum habitasse sollicitudin pede, posuere proin Maecenas. Iaculis sodales erat magna Aptent. Sociis Luctus commodo curae;, ut. Conubia eu senectus ridiculus elit tempor penatibus turpis. Pharetra magna erat eget mauris viverra dui, dolor, class congue lobortis lacus dui egestas at Potenti, tempus ad in magnis justo duis mollis. Arcu ullamcorper hymenaeos ligula platea torquent auctor vehicula aptent porttitor malesuada eu suspendisse fermentum. Ullamcorper est mi nam dui nibh dictum dui rhoncus. Urna rutrum ac gravida risus primis nisl. Condimentum nisl ultricies feugiat laoreet facilisi nam mauris.</string>
+    <string name="biodata_texto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel nisl id tortor tristique vestibulum vel non nulla. Cras egestas metus nec nisl consequat, nec semper leo lacinia. Integer maximus nulla elit, sed ullamcorper tellus porta eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet tellus dui. Sed nec lorem dignissim, molestie risus vitae, suscipit enim. Nullam ornare luctus diam, nec ullamcorper lorem tempor sed. Praesent sollicitudin molestie elit, eu dapibus felis. Proin pellentesque massa ut leo tincidunt, a vehicula velit tincidunt.\n\n
+        Integer eu nulla est. Integer molestie vehicula est, id suscipit nunc tempus euismod. Nam volutpat accumsan purus nec porta. Proin maximus urna eget nisi mattis elementum. In ac risus vitae magna gravida lacinia. Vivamus sit amet sapien a leo bibendum placerat. In ac dolor eros.\n\n
+    </string>
     <string name="boton_evaluacion_calificar">Calificar</string>
     <string name="calidad_ponencia_etiqueta">Calidad de la ponencia</string>
     <string name="experiencia_ponente_etiqueta">Experiencia del ponente</string>
@@ -24,6 +27,9 @@
     <string name="descripcion_acerca_de">GEE es una aplicación para la gestión de eventos académicos en la Escuela Nacional de Lenguas, Lingüística y Traducción de la UNAM. </string>
     <string name="copyright">© 2018 Escuela Nacional de Lenguas, Lingüística y Traducción</string>
     <string name="desarrolladores_acerca_de">Lic. Emmanuel Antonio García Carrillo\nM. en C. Román Alvar Sánchez Garcia\nIng. José Luis Vázquez Torres</string>
+    <string name="seccion_ponencia_etiqueta">Ponencia</string>
+    <string name="seccion_ponente_etiqueta">Ponente</string>
+    <string name="seccion_abstract_etiqueta">Abstract</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
