@@ -1,9 +1,7 @@
 package com.appgee.proyectoandroid.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +10,7 @@ import android.widget.TextView;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.models.Ponencia;
 
-public class PonenciaDetalleActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class PonenciaDetalleActivity extends BaseActivity {
     TextView tvTituloPonencia;
     TextView tvNombrePonente;
     TextView tvFechaPonencia;
@@ -26,10 +23,7 @@ public class PonenciaDetalleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponencia_detalle);
 
-        toolbar = findViewById(R.id.toolbar_other);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
         getSupportActionBar().setTitle("Actividad");
 
@@ -58,6 +52,11 @@ public class PonenciaDetalleActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_ponencia_detalle;
     }
 
     @Override

@@ -1,16 +1,13 @@
 package com.appgee.proyectoandroid.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.models.Ponente;
 
-public class PonenteDetallesActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class PonenteDetallesActivity extends BaseActivity {
     TextView tvNombre;
     TextView tvApellidos;
     TextView tvInstitucion;
@@ -20,10 +17,6 @@ public class PonenteDetallesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponente_detalles);
-
-        toolbar = findViewById(R.id.toolbar_other);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
         getSupportActionBar().setTitle("Ponente");
 
@@ -38,6 +31,11 @@ public class PonenteDetallesActivity extends AppCompatActivity {
             tvApellidos.setText(ponente.getApellidos());
             tvInstitucion.setText(ponente.getInstitucion());
         }
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_ponente_detalles;
     }
 
     @Override
