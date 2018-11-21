@@ -25,7 +25,6 @@ public class PonenciaDetalleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
-        getSupportActionBar().setTitle("Actividad");
 
         tvTituloPonencia = findViewById(R.id.tvTituloPonencia);
         tvNombrePonente = findViewById(R.id.tvNombrePonente);

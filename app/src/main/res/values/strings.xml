@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Gee</string>
     <string name="activity_name_acerca_de">Sobre Gee</string>
+    <string name="activity_name_ponentes_detalle">Datos del ponente</string>
 
     <string name="app_titulo">GESTIÓN DE EVENTOS ENALLT</string>
     <string name="app_subtitulo">Congreso Internacional de Lenguas, Lingüística y Traducción</string>

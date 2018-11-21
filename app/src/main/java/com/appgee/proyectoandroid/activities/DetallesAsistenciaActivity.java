@@ -7,17 +7,17 @@ import android.view.MenuItem;
 
 import com.appgee.proyectoandroid.R;
 
-public class DetallesAsistenciaActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
+public class DetallesAsistenciaActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalles_asistencia);
 
-        toolbar = findViewById(R.id.toolbar_detalles_asistencia);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_detalles_asistencia;
     }
 
     @Override

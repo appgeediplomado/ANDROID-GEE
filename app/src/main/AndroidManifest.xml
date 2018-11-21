@@ -27,13 +27,18 @@
         </activity>
         <activity
             android:name=".activities.AcercaDeActivity"
+            android:label="@string/activity_name_acerca_de"
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.PonenteDetallesActivity"
+            android:label="@string/activity_name_ponentes_detalle"
             android:parentActivityName=".activities.MainActivity" />
-        <activity android:name=".activities.PonenciaDetalleActivity" />
-        <activity android:name=".activities.PonenciaEvaluacionActivity"></activity>
-            android:label="@string/activity_name_acerca_de"
+        <activity
+            android:name=".activities.PonenciaDetalleActivity"
+            android:label="Actividad"
+            android:parentActivityName=".activities.MainActivity"/>
+        <activity
+            android:name=".activities.PonenciaEvaluacionActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.UbicacionActivity"

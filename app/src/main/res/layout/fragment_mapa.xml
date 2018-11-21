@@ -1,98 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView
     android:layout_height="match_parent"
-    tools:context=".fragments.InicioFragment"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.InicioFragment"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ENALLT - Edificio A"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="15dp"
-        android:textSize="18sp"
-        android:background="@color/colorTextPrimaryDark"
-        android:textColor="@android:color/white" />
-    <TextView
-        android:id="@+id/tvPlantaBajaA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Planta baja"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/colorTextGris" />
-    <TextView
-        android:id="@+id/tvPrimerPisoA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Primer piso"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/colorTextGris" />
-    <TextView
-        android:id="@+id/tvTercerPisoA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tercer piso"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ENALLT - Edificio B"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="15dp"
-        android:textSize="18sp"
-        android:background="@color/colorTextPrimaryDark"
-        android:textColor="@android:color/white" />
-    <TextView
-        android:id="@+id/tvBasamentoB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Basamento"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/colorTextGris" />
-    <TextView
-        android:id="@+id/tvPlantaBajaB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Planta baja"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/colorTextGris" />
-    <TextView
-        android:id="@+id/tvPrimerPisoB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Primer piso"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorTextPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/colorTextGris" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ENALLT - Edificio A"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:textSize="18sp"
+            android:background="@color/colorTextPrimaryDark"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/tvPlantaBajaA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Planta baja"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorTextGris" />
+        <TextView
+            android:id="@+id/tvPrimerPisoA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Primer piso"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorTextGris" />
+        <TextView
+            android:id="@+id/tvTercerPisoA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tercer piso"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ENALLT - Edificio B"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:textSize="18sp"
+            android:background="@color/colorTextPrimaryDark"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/tvBasamentoB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Basamento"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorTextGris" />
+        <TextView
+            android:id="@+id/tvPlantaBajaB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Planta baja"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorTextGris" />
+        <TextView
+            android:id="@+id/tvPrimerPisoB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Primer piso"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/colorTextGris" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
