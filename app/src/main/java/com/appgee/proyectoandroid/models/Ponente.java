@@ -82,9 +82,7 @@ public class Ponente implements Serializable {
         if (!nombre.equals(ponente.nombre)) return false;
         if (apellidos != null ? !apellidos.equals(ponente.apellidos) : ponente.apellidos != null)
             return false;
-        if (institucion != null ? !institucion.equals(ponente.institucion) : ponente.institucion != null)
-            return false;
-        return true;
+        return institucion != null ? institucion.equals(ponente.institucion) : ponente.institucion == null;
     }
 
     @Override

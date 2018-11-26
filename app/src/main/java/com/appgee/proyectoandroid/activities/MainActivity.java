@@ -125,4 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(menuItem.getTitle());
     }
+
+    @Override
+    public void onBackPressed() {
+        getSupportActionBar().setTitle("Peliculas");
+        super.onBackPressed();
+    }
 }

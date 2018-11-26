@@ -1,94 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.InicioFragment">
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout_usuario"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/colorTextGris"
-        app:hintTextAppearance="@style/AppTheme.FloatingLabel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.056">
+        tools:context=".fragments.InicioFragment">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputEditText_usuario"
+        <ImageView
+            android:id="@+id/ivLogoGee"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.5"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_gee"
+            tools:ignore="ContentDescription" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_usuario"
-            android:inputType="textCapSentences"
-            android:theme="@style/EditText" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColorHint="@color/colorTextGris"
+            app:hintTextAppearance="@style/AppTheme.FloatingLabel"
+            app:layout_constraintBottom_toTopOf="@id/textInputLayout_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogoGee">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColorHint="@color/colorTextGris"
-        app:hintTextAppearance="@style/AppTheme.FloatingLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_usuario">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditText_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_usuario"
+                android:inputType="textCapSentences"
+                android:theme="@style/EditText" />
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputEditText_password"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_password"
-            android:inputType="textCapSentences"
-            android:theme="@style/EditText" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="@color/colorTextGris"
+            app:hintTextAppearance="@style/AppTheme.FloatingLabel"
+            app:layout_constraintBottom_toTopOf="@+id/btnInicioSesion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_usuario">
 
-    <Button
-        android:id="@+id/btnInicioSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:background="@android:color/transparent"
-        android:text="@string/boton_iniciar_sesion"
-        android:textColor="@color/colorTextPrimaryDark"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_password" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditText_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textCapSentences"
+                android:theme="@style/EditText" />
+        </android.support.design.widget.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/ivLogoGee"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnInicioSesion"
-        app:layout_constraintVertical_bias="0.448"
-        app:srcCompat="@drawable/logo_gee"
-        tools:ignore="ContentDescription"/>
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btnInicioSesion"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/boton_iniciar_sesion"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout_password" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

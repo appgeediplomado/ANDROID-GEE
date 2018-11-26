@@ -10,17 +10,13 @@ import android.widget.TextView;
 import com.appgee.proyectoandroid.R;
 
 public class UbicacionActivity extends BaseActivity {
-//    Toolbar toolbar;
     TextView tvEdificio;
     TextView tvUbicacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_ubicacion);
 
-//        toolbar = findViewById(R.id.toolbar_ubicacion);
-//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
 
         tvEdificio = findViewById(R.id.tvNombreEdificio);
