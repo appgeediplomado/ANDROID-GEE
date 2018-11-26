@@ -35,7 +35,7 @@
             android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.PonenciaDetalleActivity"
-            android:label="Actividad"
+            android:label="Ponencia"
             android:parentActivityName=".activities.MainActivity"/>
         <activity
             android:name=".activities.PonenciaEvaluacionActivity"

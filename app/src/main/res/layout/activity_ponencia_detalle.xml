@@ -41,18 +41,18 @@
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloPonencia"
-        app:srcCompat="@drawable/ic_programa"
-        tools:ignore="ContentDescription"/>
+        app:srcCompat="@drawable/ic_calendario"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvFechaPonencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintStart_toEndOf="@+id/ivFecha"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloPonencia"
@@ -60,14 +60,14 @@
 
     <ImageView
         android:id="@+id/ivHora"
-        android:layout_width="28dp"
+        android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFechaPonencia"
+        app:layout_constraintTop_toBottomOf="@+id/ivFecha"
         app:srcCompat="@drawable/ic_clock"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvHoraPonencia"
@@ -88,8 +88,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivHora"
-        app:srcCompat="@drawable/ic_mapa"
-        tools:ignore="ContentDescription"/>
+        app:srcCompat="@drawable/ic_aula"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvLugarPonencia"
@@ -110,21 +110,19 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLugar"
-        app:srcCompat="@drawable/ic_calificar"
-        tools:ignore="ContentDescription"/>
+        app:srcCompat="@drawable/ic_rate"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/btnCalificarPonencia"
-        android:layout_width="0dp"
-        android:layout_height="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:text="@string/boton_evaluacion_calificar"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toStartOf="@+id/ivRightIndicator"
         app:layout_constraintStart_toEndOf="@+id/ivCalificar"
         app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
 

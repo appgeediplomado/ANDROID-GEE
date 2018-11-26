@@ -9,19 +9,18 @@ import android.widget.TextView;
 
 import com.appgee.proyectoandroid.R;
 
-public class UbicacionActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
+public class UbicacionActivity extends BaseActivity {
+//    Toolbar toolbar;
     TextView tvEdificio;
     TextView tvUbicacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ubicacion);
+//        setContentView(R.layout.activity_ubicacion);
 
-        toolbar = findViewById(R.id.toolbar_ubicacion);
-        setSupportActionBar(toolbar);
+//        toolbar = findViewById(R.id.toolbar_ubicacion);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
 
         tvEdificio = findViewById(R.id.tvNombreEdificio);
@@ -31,6 +30,11 @@ public class UbicacionActivity extends AppCompatActivity {
         tvEdificio.setText( recibir.getStringExtra("Edificio"));
         tvUbicacion.setText( recibir.getStringExtra("TituloUbicacion") );
 
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_ubicacion;
     }
 
     @Override

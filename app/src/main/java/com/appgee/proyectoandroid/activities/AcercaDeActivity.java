@@ -7,17 +7,17 @@ import android.view.MenuItem;
 
 import com.appgee.proyectoandroid.R;
 
-public class AcercaDeActivity extends AppCompatActivity {
-    Toolbar toolbar;
-
+public class AcercaDeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acerca_de);
 
-        toolbar = findViewById(R.id.toolbar_other);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_acerca_de;
     }
 
     @Override

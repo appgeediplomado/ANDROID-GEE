@@ -25,6 +25,6 @@ abstract public class BaseActivity extends AppCompatActivity {
         scrollView.addView(childLayout);
     }
 
-    // Debe devolver el ID del layout qe se inserta en el scrollview
+    // Debe devolver el ID del layout que se inserta en el scrollview
     protected abstract int getContentAreaLayout();
 }

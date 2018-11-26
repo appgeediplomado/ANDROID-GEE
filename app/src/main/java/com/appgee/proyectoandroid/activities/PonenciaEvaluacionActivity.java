@@ -12,8 +12,8 @@ import android.widget.Toast;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.models.Ponencia;
 
-public class PonenciaEvaluacionActivity extends AppCompatActivity {
-    Toolbar toolbar;
+public class PonenciaEvaluacionActivity extends BaseActivity {
+//    Toolbar toolbar;
     TextView tvPonenciaTitulo;
     Button btnEvaluacionPonenciaCalificar;
     Ponencia ponencia = null;
@@ -21,10 +21,10 @@ public class PonenciaEvaluacionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponencia_evaluacion);
+//        setContentView(R.layout.activity_ponencia_evaluacion);
 
-        toolbar = findViewById(R.id.toolbar_other);
-        setSupportActionBar(toolbar);
+//        toolbar = findViewById(R.id.toolbar_other);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //Pone el menu hamburguesa
         getSupportActionBar().setTitle("Evaluación");
 
@@ -42,6 +42,11 @@ public class PonenciaEvaluacionActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected int getContentAreaLayout() {
+        return R.layout.activity_ponencia_evaluacion;
     }
 
     @Override

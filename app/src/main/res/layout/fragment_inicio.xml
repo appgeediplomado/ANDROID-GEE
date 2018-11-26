@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,10 +15,10 @@
         android:id="@+id/textInputLayout_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:textColorHint="@color/colorTextGris"
         app:hintTextAppearance="@style/AppTheme.FloatingLabel"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +32,7 @@
             android:id="@+id/textInputEditText_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Usuario"
+            android:hint="@string/hint_usuario"
             android:inputType="textCapSentences"
             android:theme="@style/EditText" />
     </android.support.design.widget.TextInputLayout>
@@ -37,9 +41,9 @@
         android:id="@+id/textInputLayout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:textColorHint="@color/colorTextGris"
         app:hintTextAppearance="@style/AppTheme.FloatingLabel"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +55,7 @@
             android:id="@+id/textInputEditText_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:hint="@string/hint_password"
             android:inputType="textCapSentences"
             android:theme="@style/EditText" />
     </android.support.design.widget.TextInputLayout>
@@ -63,9 +67,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
-        android:text="Iniciar sesión"
-        android:textColor="@color/colorTextPrimaryDark"
         android:background="@android:color/transparent"
+        android:text="@string/boton_iniciar_sesion"
+        android:textColor="@color/colorTextPrimaryDark"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -84,9 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnInicioSesion"
         app:layout_constraintVertical_bias="0.448"
-        app:srcCompat="@drawable/logo_gee" />
-
-
-
-
+        app:srcCompat="@drawable/logo_gee"
+        tools:ignore="ContentDescription"/>
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -2,11 +2,12 @@
 <resources>
     <color name="colorPrimary">#7e6208</color>
     <color name="colorPrimaryDark">#4f3d04</color>
-    <color name="colorAccent">#d81b60</color>
+    <color name="colorAccent">#7e6208</color>
     <color name="colorUNAM">#7e6208</color>
     <color name="colorSeparador">#bbc1cc</color>
     <color name="colorTextPrimary">#001928</color>
     <color name="colorTextPrimaryDark">#004168</color>
     <color name="colorTextAccent">#7E6208</color>
     <color name="colorTextGris">#555555</color>
+    <color name="secondaryColor">#762c99</color>
 </resources>
