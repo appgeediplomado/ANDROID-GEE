@@ -109,9 +109,10 @@
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLugar"
-        app:srcCompat="@drawable/ic_rate"
+        app:srcCompat="@drawable/ic_star"
         tools:ignore="ContentDescription" />
 
     <Button
@@ -199,11 +200,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSeccionAbstract" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_star"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="87dp" />
 </android.support.constraint.ConstraintLayout>
