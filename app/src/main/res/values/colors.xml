@@ -10,4 +10,6 @@
     <color name="colorTextAccent">#7E6208</color>
     <color name="colorTextGris">#555555</color>
     <color name="secondaryColor">#762c99</color>
+    <color name="colorFondoAzul">#1c3d6c</color>
+    <color name="colorAzulClaro">#285799</color>
 </resources>

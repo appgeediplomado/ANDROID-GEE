@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        drawerLayout.closeDrawers();
         getSupportActionBar().setTitle("Peliculas");
         super.onBackPressed();
     }

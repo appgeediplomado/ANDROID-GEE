@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,8 +94,8 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         TextView tvHora;
         TextView tvLugar;
         TextView tvModalidad;
-        ImageButton btnPonenciaCalificar;
-        ImageButton btnPonenciaAgendar;
+        Button btnPonenciaAgendar;
+        Button btnPonenciaCalificar;
 
         public PonenciaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,8 +106,8 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
             tvHora = itemView.findViewById(R.id.tvHoraPonencia);
             tvLugar = itemView.findViewById(R.id.tvLugarPonencia);
             tvModalidad = itemView.findViewById(R.id.tvPonenciaModalidad);
-            btnPonenciaCalificar = itemView.findViewById(R.id.btnCalificarPonencia);
-            btnPonenciaAgendar = itemView.findViewById(R.id.btnPonenciaAgendar);
+            btnPonenciaAgendar = itemView.findViewById(R.id.botonPonenciaAgendar);
+            btnPonenciaCalificar = itemView.findViewById(R.id.botonPonenciaCalificar);
         }
     }
 }

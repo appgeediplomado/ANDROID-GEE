@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/tvSeccionPonencia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextPrimaryDark"
+        android:background="@color/colorFondoAzul"
         android:paddingStart="16dp"
         android:paddingTop="4dp"
         android:paddingEnd="16dp"
@@ -142,10 +143,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@color/colorTextPrimaryDark"
+        android:background="@color/colorFondoAzul"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:paddingTop="4dp"
+        android:paddingEnd="16dp"
         android:paddingBottom="4dp"
         android:text="@string/seccion_ponente_etiqueta"
         android:textColor="@android:color/white"
@@ -171,7 +172,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@color/colorTextPrimaryDark"
+        android:background="@color/colorFondoAzul"
         android:paddingStart="16dp"
         android:paddingTop="4dp"
         android:paddingEnd="16dp"
@@ -197,4 +198,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSeccionAbstract" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star"
+        tools:layout_editor_absoluteX="274dp"
+        tools:layout_editor_absoluteY="87dp" />
 </android.support.constraint.ConstraintLayout>

@@ -15,12 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ENALLT - Edificio A"
-            android:paddingVertical="10dp"
+            android:background="@color/colorFondoAzul"
             android:paddingHorizontal="15dp"
-            android:textSize="18sp"
-            android:background="@color/colorTextPrimaryDark"
-            android:textColor="@android:color/white" />
+            android:paddingVertical="10dp"
+            android:text="ENALLT - Edificio A"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/tvPlantaBajaA"
             android:layout_width="match_parent"
@@ -53,15 +53,16 @@
             android:padding="15dp"
             android:textSize="16sp"
             android:textColor="@color/colorTextPrimary"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ENALLT - Edificio B"
-            android:paddingVertical="10dp"
+            android:background="@color/colorFondoAzul"
             android:paddingHorizontal="15dp"
-            android:textSize="18sp"
-            android:background="@color/colorTextPrimaryDark"
-            android:textColor="@android:color/white" />
+            android:paddingVertical="10dp"
+            android:text="ENALLT - Edificio B"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/tvBasamentoB"
             android:layout_width="match_parent"
