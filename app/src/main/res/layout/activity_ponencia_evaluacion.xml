@@ -109,6 +109,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/button_background"
         android:text="@string/boton_evaluacion_calificar"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"

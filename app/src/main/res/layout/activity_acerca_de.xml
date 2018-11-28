@@ -14,11 +14,13 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
+        android:alpha="0.5"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_gee" />
+        app:srcCompat="@drawable/logo_gee"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/tvAppName"
@@ -136,7 +138,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/grafcos_acerca_de"
+        android:text="@string/graficos_acerca_de"
         android:textAlignment="center"
         android:textColor="@color/colorTextGris"
         android:textSize="11sp"

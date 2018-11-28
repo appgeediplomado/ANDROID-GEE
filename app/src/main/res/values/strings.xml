@@ -34,7 +34,7 @@
     <string name="descripcion_acerca_de">GEE es una aplicación para la gestión de eventos académicos en la Escuela Nacional de Lenguas, Lingüística y Traducción de la UNAM. </string>
     <string name="copyright">© 2018 Escuela Nacional de Lenguas, Lingüística y Traducción</string>
     <string name="desarrolladores_acerca_de">Lic. Emmanuel Antonio García Carrillo\nM. en C. Román Alvar Sánchez Garcia\nIng. José Luis Vázquez Torres</string>
-    <string name="grafcos_acerca_de">D.G Osmán Lucero Anzures</string>
+    <string name="graficos_acerca_de">D.G Osmán Lucero Anzures</string>
     <string name="seccion_ponencia_etiqueta">Ponencia</string>
     <string name="seccion_ponente_etiqueta">Ponente</string>
     <string name="seccion_abstract_etiqueta">Abstract</string>
