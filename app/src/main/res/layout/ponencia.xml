@@ -111,7 +111,8 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgClock"
-            app:srcCompat="@drawable/ic_aula" />
+            app:srcCompat="@drawable/ic_aula"
+            tools:ignore="ContentDescription"/>
 
         <Button
             android:id="@+id/botonPonenciaAgendar"
@@ -120,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Agendar"
+            android:text="@string/boton_ponencia_agendar"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
@@ -132,11 +133,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Calificar "
-            app:layout_constraintStart_toEndOf="@+id/botonPonenciaAgendar"
-            app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia"
             android:drawableEnd="@drawable/ic_star"
-            android:drawableTint="@color/colorUNAM"/>
+            android:drawableTint="@color/colorUNAM"
+            android:text="@string/boton_ponencia_calificar"
+            app:layout_constraintStart_toEndOf="@+id/botonPonenciaAgendar"
+            app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

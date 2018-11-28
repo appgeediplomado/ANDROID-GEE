@@ -1,5 +1,4 @@
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -103,41 +102,33 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHoraPonencia"
         tools:text="Lugar de la ponencia" />
 
-    <ImageView
-        android:id="@+id/ivCalificar"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:tint="@color/colorPrimary"
+    <Button
+        android:id="@+id/btnAgendarPonencia"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/boton_ponencia_agendar"
+        android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLugar"
-        app:srcCompat="@drawable/ic_star"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
 
     <Button
         android:id="@+id/btnCalificarPonencia"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:text="@string/boton_evaluacion_calificar"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/ivCalificar"
-        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
-
-    <ImageView
-        android:id="@+id/ivRightIndicator"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia"
-        app:srcCompat="@drawable/ic_right_indicator"
-        tools:ignore="ContentDescription" />
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_star"
+        android:drawableTint="@color/colorUNAM"
+        android:text="@string/boton_ponencia_calificar"
+        android:textAlignment="viewStart"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toEndOf="@id/btnAgendarPonencia"
+        app:layout_constraintTop_toBottomOf="@+id/tvLugarPonencia" />
 
     <TextView
         android:id="@+id/tvSeccionPonente"
@@ -155,7 +146,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCalificar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAgendarPonencia" />
 
     <TextView
         android:id="@+id/tvNombrePonente"

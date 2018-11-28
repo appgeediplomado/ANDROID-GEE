@@ -25,6 +25,8 @@
         Integer eu nulla est. Integer molestie vehicula est, id suscipit nunc tempus euismod. Nam volutpat accumsan purus nec porta. Proin maximus urna eget nisi mattis elementum. In ac risus vitae magna gravida lacinia. Vivamus sit amet sapien a leo bibendum placerat. In ac dolor eros.\n\n
     </string>
     <string name="boton_evaluacion_calificar">Calificar</string>
+    <string name="boton_ponencia_agendar">Agendar</string>
+    <string name="boton_ponencia_calificar">Calificar</string>
     <string name="calidad_ponencia_etiqueta">Calidad de la ponencia</string>
     <string name="experiencia_ponente_etiqueta">Experiencia del ponente</string>
     <string name="relevancia_ponencia_etiqueta">Relevancia de la ponencia</string>

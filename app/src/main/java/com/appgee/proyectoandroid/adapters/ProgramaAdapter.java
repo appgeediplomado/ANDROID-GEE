@@ -55,18 +55,18 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         viewHolder.btnPonenciaCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), PonenciaEvaluacionActivity.class);
+            Intent intent = new Intent(view.getContext(), PonenciaEvaluacionActivity.class);
 
-                Ponencia ponencia = ponencias.get(i);
-                intent.putExtra("ponencia", ponencia);
-                view.getContext().startActivity(intent);
+            Ponencia ponencia = ponencias.get(i);
+            intent.putExtra("ponencia", ponencia);
+            view.getContext().startActivity(intent);
             }
         });
         
         viewHolder.btnPonenciaAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
             }
         });
 

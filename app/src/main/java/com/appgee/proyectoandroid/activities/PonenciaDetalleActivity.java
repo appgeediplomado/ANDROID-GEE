@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.models.Ponencia;
@@ -16,6 +17,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
     TextView tvFechaPonencia;
     TextView tvHoraPonencia;
     TextView tvLugarPonencia;
+    Button btnAgendarPonencia;
     Button btnCalificarPonencia;
 
     Ponencia ponencia = null;
@@ -31,6 +33,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
         tvFechaPonencia = findViewById(R.id.tvFechaPonencia);
         tvHoraPonencia = findViewById(R.id.tvHoraPonencia);
         tvLugarPonencia = findViewById(R.id.tvLugarPonencia);
+        btnAgendarPonencia = findViewById(R.id.btnAgendarPonencia);
         btnCalificarPonencia = findViewById(R.id.btnCalificarPonencia);
 
         ponencia = (Ponencia) getIntent().getSerializableExtra("ponencia");
@@ -41,6 +44,13 @@ public class PonenciaDetalleActivity extends BaseActivity {
             tvFechaPonencia.setText(ponencia.getFecha());
             tvHoraPonencia.setText(ponencia.getHora());
             tvLugarPonencia.setText(ponencia.getLugar());
+
+            btnAgendarPonencia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             btnCalificarPonencia.setOnClickListener(new View.OnClickListener() {
                 @Override
