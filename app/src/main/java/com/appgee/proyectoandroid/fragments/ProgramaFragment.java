@@ -7,6 +7,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -29,7 +31,11 @@ public class ProgramaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Indicar a la actividad contenedora que este fragmento tiene opciones del menú
+        setHasOptionsMenu(true);
+
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_programa, container, false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -41,5 +47,12 @@ public class ProgramaFragment extends Fragment {
         rvPrograma.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

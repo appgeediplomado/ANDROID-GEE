@@ -99,26 +99,29 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_search, menu);
+
         MenuItem searchItem = menu.findItem(R.id.item_buscar);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
         }
+
         if (searchView != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
 
             queryTextListener = new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    Log.i("onQueryTextChange", newText);
+                    Log.i("GEE-SEARCH", "onQueryTextChange: " + newText);
                     //Filtra al ir escribiendo
                     ponenteAdapter.getFilter().filter(newText);
                     return true;
                 }
+
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    Log.i("onQueryTextSubmit", query);
+                    Log.i("GEE-SEARCH", "onQueryTextSubmit: " + query);
 
                     //Filtra al dar ENTER
                     return true;
@@ -126,6 +129,7 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
             };
             searchView.setOnQueryTextListener(queryTextListener);
         }
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
