@@ -14,7 +14,7 @@
             android:theme="@style/MainTheme">
             <intent-filter>
                 <!-- Indica que ésta es una actividad de búsqueda (recibe un intente ACTION_SEARCH)  -->
-                <!--<action android:name="android.intent.action.SEARCH" />-->
+                <action android:name="android.intent.action.SEARCH" />
 
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

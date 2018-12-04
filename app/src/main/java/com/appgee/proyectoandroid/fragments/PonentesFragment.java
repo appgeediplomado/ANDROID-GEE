@@ -147,23 +147,6 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
         return super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<Ponente> getPonentes(){
-        ArrayList<Ponente> ponentes = new ArrayList<>();
-        ponentes.add(new Ponente(1,"Juan Solis 1","Benemerito", "Biología"));
-        ponentes.add(new Ponente(2,"Pedro","Benemerito", "Estéticas"));
-        ponentes.add(new Ponente(3,"Emmanuel","Benemerito", "Historía"));
-        ponentes.add(new Ponente(4,"Allan","Benemerito", "Física"));
-        ponentes.add(new Ponente(5,"Esthela","Benemerito", "Geografía"));
-        ponentes.add(new Ponente(6,"Miriam","Benemerito", "Economía"));
-        ponentes.add(new Ponente(7,"Carlos","Benemerito", "Salud"));
-        ponentes.add(new Ponente(8,"Juan","Benemerito", "Contaduría"));
-        ponentes.add(new Ponente(9,"Juan Solis 9","Benemerito", "Administración"));
-        ponentes.add(new Ponente(10,"Juan Solis 10","Benemerito", "Infrmática"));
-        ponentes.add(new Ponente(11,"Juan Solis 11","Benemerito", "Políticas"));
-        ponentes.add(new Ponente(12,"Juan Solis 12","Benemerito", "Fresas"));
-        return ponentes;
-    }
-
     @Override
     public void onPonenteClick(Ponente ponente) {
         Intent intent = new Intent(getActivity(), PonenteDetallesActivity.class);

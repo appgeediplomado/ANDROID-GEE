@@ -16,14 +16,17 @@ import com.appgee.proyectoandroid.activities.PonenciaDetalleActivity;
 import com.appgee.proyectoandroid.activities.PonenciaEvaluacionActivity;
 import com.appgee.proyectoandroid.models.Ponencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.PonenciaViewHolder> implements View.OnClickListener {
     private List<Ponencia> ponencias;
+    private List<Ponencia> ponenciasFiltradas;
     private RecyclerView recyclerView;
 
     public ProgramaAdapter(List<Ponencia> ponencias) {
         this.ponencias = ponencias;
+        this.ponenciasFiltradas = new ArrayList<>(ponencias);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
 
     @Override
     public void onBindViewHolder(@NonNull PonenciaViewHolder viewHolder, final int i) {
-        final Ponencia ponencia = ponencias.get(i);
+        final Ponencia ponencia = ponenciasFiltradas.get(i);
 
         viewHolder.tvTitulo.setText(ponencia.getTitulo());
         viewHolder.tvNombrePonente.setText(ponencia.getNombrePonente());
@@ -57,7 +60,6 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
             public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), PonenciaEvaluacionActivity.class);
 
-            Ponencia ponencia = ponencias.get(i);
             intent.putExtra("ponencia", ponencia);
             view.getContext().startActivity(intent);
             }
@@ -74,13 +76,13 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
 
     @Override
     public int getItemCount() {
-        return ponencias.size();
+        return ponenciasFiltradas.size();
     }
 
     @Override
     public void onClick(View view) {
         int posicion = recyclerView.getChildLayoutPosition(view);
-        Ponencia ponencia = ponencias.get(posicion);
+        Ponencia ponencia = ponenciasFiltradas.get(posicion);
 
         Intent intent = new Intent(view.getContext(), PonenciaDetalleActivity.class);
         intent.putExtra("ponencia", ponencia);
@@ -109,5 +111,21 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
             btnPonenciaAgendar = itemView.findViewById(R.id.botonPonenciaAgendar);
             btnPonenciaCalificar = itemView.findViewById(R.id.botonPonenciaCalificar);
         }
+    }
+
+    public void filtrar(String filtro) {
+        ArrayList<Ponencia> lista = new ArrayList<>();
+
+        for (Ponencia ponencia: ponencias) {
+            String cadena = filtro.toLowerCase().trim();
+
+            if (ponencia.getTitulo().toLowerCase().contains(cadena)) {
+                lista.add(ponencia);
+            }
+        }
+
+        ponenciasFiltradas.clear();
+        ponenciasFiltradas.addAll(lista);
+        notifyDataSetChanged();
     }
 }
