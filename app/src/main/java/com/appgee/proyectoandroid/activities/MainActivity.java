@@ -11,6 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.appgee.proyectoandroid.R;
@@ -46,49 +48,19 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                boolean esFragment = false;
                 Fragment fragment = null;
+                boolean esFragment = false;
 
-                switch (menuItem.getItemId()) {
-                    case R.id.item_inicio:
-                        fragment = new InicioFragment();
-                        esFragment = true;
+                Integer menuItemId = menuItem.getItemId();
 
-                        break;
-
-                    case R.id.item_programa:
-                        fragment = new ProgramaFragment();
-                        esFragment = true;
-
-                        break;
-
-                    case R.id.item_ponentes:
-                        fragment = new PonentesFragment();
-                        esFragment = true;
-
-                        break;
-
-                    case R.id.item_asistencia:
-                        fragment = new AsistenciaFragment();
-                        esFragment = true;
-
-                        break;
-
-                    case R.id.item_mapa:
-                        fragment = new MapaFragment();
-                        esFragment = true;
-
-                        break;
-
-                    case R.id.item_acerca_de:
-                        Intent  intent = new Intent(MainActivity.this, AcercaDeActivity.class);
-                        startActivity(intent);
-
-                        break;
-                }
+                fragment = seleccionaFragment(menuItemId);
+                esFragment = (fragment != null);
 
                 if (esFragment) {
-                    reemplazarFragment(fragment, menuItem, BACK_STACK_PRIMER_NIVEL);
+                    reemplazarFragment(fragment, menuItem.getTitle().toString(), BACK_STACK_PRIMER_NIVEL);
+                } else if (menuItemId == R.id.item_acerca_de) {
+                    Intent  intent = new Intent(MainActivity.this, AcercaDeActivity.class);
+                    startActivity(intent);
                 }
 
                 drawerLayout.closeDrawers();
@@ -96,7 +68,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        reemplazarFragment(new InicioFragment(), navigationView.getMenu().getItem(0), BACK_STACK_RAIZ);
+        MenuItem menuItem = navigationView.getMenu().getItem(0);
+        menuItem.setChecked(true);
+        reemplazarFragment(new InicioFragment(), menuItem.getTitle().toString(), BACK_STACK_RAIZ);
+    }
+
+    private Fragment seleccionaFragment(Integer menuItemId) {
+        Fragment fragment = null;
+
+        switch (menuItemId) {
+            case R.id.item_inicio:
+                fragment = new InicioFragment();
+
+                break;
+
+            case R.id.item_programa:
+                fragment = new ProgramaFragment();
+
+                break;
+
+            case R.id.item_ponentes:
+                fragment = new PonentesFragment();
+
+                break;
+
+            case R.id.item_asistencia:
+                fragment = new AsistenciaFragment();
+
+                break;
+
+            case R.id.item_mapa:
+                fragment = new MapaFragment();
+
+                break;
+        }
+
+        return fragment;
     }
 
     @Override
@@ -110,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void reemplazarFragment(Fragment fragment, MenuItem menuItem, String tag) {
+    private void reemplazarFragment(Fragment fragment, String titulo, String tag) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
@@ -123,13 +130,30 @@ public class MainActivity extends AppCompatActivity {
 
         transaction.commit();
 
-        getSupportActionBar().setTitle(menuItem.getTitle());
+        getSupportActionBar().setTitle(titulo);
     }
 
     @Override
     public void onBackPressed() {
         drawerLayout.closeDrawers();
-        getSupportActionBar().setTitle("Peliculas");
+        getSupportActionBar().setTitle("Inicio");
+        navigationView.getMenu().getItem(0).setChecked(true);
+
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        MenuItem menuItem = navigationView.getCheckedItem();
+
+        if (menuItem != null) {
+            Fragment fragment = seleccionaFragment(menuItem.getItemId());
+
+            if (fragment != null) {
+                reemplazarFragment(fragment, menuItem.getTitle().toString(), BACK_STACK_RAIZ);
+            }
+        }
     }
 }

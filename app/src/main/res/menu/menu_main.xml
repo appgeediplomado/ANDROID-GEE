@@ -20,7 +20,7 @@
             android:title="@string/menu_item_asistencia" />
         <item
             android:id="@+id/item_mapa"
-            android:icon="@drawable/ic_edificio"
+            android:icon="@drawable/ic_mapa"
             android:title="@string/menu_item_mapa"></item>
     </group>
     <item

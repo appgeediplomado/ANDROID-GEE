@@ -156,7 +156,6 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     static class ViewHolderLetter extends RecyclerView.ViewHolder {
-
         protected TextView tvLetra;
 
         public ViewHolderLetter(View itemView) {

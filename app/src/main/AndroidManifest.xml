@@ -12,18 +12,17 @@
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/MainTheme">
+            <intent-filter>
+                <!-- Indica que ésta es una actividad de búsqueda (recibe un intente ACTION_SEARCH)  -->
+                <!--<action android:name="android.intent.action.SEARCH" />-->
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Indica cuál es la configuración de búsqueda -->
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.AcercaDeActivity"
