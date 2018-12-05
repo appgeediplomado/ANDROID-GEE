@@ -96,7 +96,8 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
                 //Log.i("PONENTES_AFTER", "Callback de ponentes");
 
                 //Recibimos la lista de ponentes
-                ponentes = lista;
+//                ponentes = lista;
+                ponentes = new ArrayList<Ponente>(lista);
 
                 Log.i("PONENTES_CHECK_LISTA", ponentes.toString());
 
