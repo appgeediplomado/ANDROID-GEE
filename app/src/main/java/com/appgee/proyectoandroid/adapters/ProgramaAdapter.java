@@ -1,6 +1,7 @@
 package com.appgee.proyectoandroid.adapters;
 
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,10 +69,15 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         viewHolder.btnPonenciaAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Toast.makeText(view.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_INSERT);
+
+            intent.setType("vnd.android.cursor.item/event");
+            intent.setData(CalendarContract.Events.CONTENT_URI);
+            intent.putExtra(CalendarContract.Events.TITLE, ponencia.getTitulo());
+
+            view.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override
