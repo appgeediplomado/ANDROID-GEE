@@ -1,5 +1,10 @@
 package com.appgee.proyectoandroid.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.io.Serializable;
 
 /**
@@ -7,18 +12,34 @@ import java.io.Serializable;
  */
 
 //Es serializable para poderlo meter al Bundle y poder leer sus datos
-//Encripta el obkjeto para poderlo pasar a ivel de bytes
+//Encripta el objeto para poderlo pasar a ivel de bytes
+//Utiliza Room para manejo con la BD
+//https://developer.android.com/training/data-storage/room/defining-data
+//https://android.jlelse.eu/5-steps-to-implement-room-persistence-library-in-android-47b10cd47b24
 
+@Entity(tableName = "ponente")
 public class Ponente implements Serializable {
 
     //Atributos de tipo basico o string ya son Serializables por default
     //Si tuvieramos otro objeto o tipo no seriablizable por default debemos definir como se serializa ese objeto
+
+    @PrimaryKey(autoGenerate = false)
     private int id;
+
+    @ColumnInfo(name = "nombre")
     private String nombre;
+
+    @ColumnInfo(name = "apellidos")
     private String apellidos;
+
+    @ColumnInfo(name = "institucion")
     private String institucion;
 
+    @ColumnInfo(name = "biodata")
+    private String biodata;
+
     //Para seccionar el el recyclerView por orden alfabético
+    @Ignore
     private int type;
 
     public int getType() {
@@ -71,6 +92,14 @@ public class Ponente implements Serializable {
         this.institucion = institucion;
     }
 
+    public String getBiodata() {
+        return biodata;
+    }
+
+    public void setBiodata(String biodata) {
+        this.biodata = biodata;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,7 +111,11 @@ public class Ponente implements Serializable {
         if (!nombre.equals(ponente.nombre)) return false;
         if (apellidos != null ? !apellidos.equals(ponente.apellidos) : ponente.apellidos != null)
             return false;
-        return institucion != null ? institucion.equals(ponente.institucion) : ponente.institucion == null;
+        if (institucion != null ? !institucion.equals(ponente.institucion) : ponente.institucion != null)
+            return false;
+        if (biodata != null ? !biodata.equals(ponente.biodata) : ponente.biodata != null)
+            return false;
+        return true;
     }
 
     @Override
@@ -91,6 +124,7 @@ public class Ponente implements Serializable {
         result = 31 * result + nombre.hashCode();
         result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
         result = 31 * result + (institucion != null ? institucion.hashCode() : 0);
+        result = 31 * result + (biodata != null ? biodata.hashCode() : 0);
         return result;
     }
 
@@ -98,9 +132,10 @@ public class Ponente implements Serializable {
     public String toString() {
         return "Ponente{" +
                 "id=" + id +
-                ", name='" + nombre + '\'' +
-                ", school='" + apellidos + '\'' +
-                ", address='" + institucion + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", institucion='" + institucion + '\'' +
+                ", biodata='" + biodata + '\'' +
                 '}';
     }
 }

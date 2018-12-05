@@ -1,11 +1,12 @@
 package com.appgee.proyectoandroid.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -26,6 +27,7 @@ import com.appgee.proyectoandroid.adapters.PonenteAdapter;
 import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.listeners.OnPonenteClickListener;
 import com.appgee.proyectoandroid.models.Ponente;
+import com.appgee.proyectoandroid.webservices.ServerCallback;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +44,8 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
     private SearchView searchView;
     private SearchView.OnQueryTextListener queryTextListener;
 
+    ArrayList<Ponente> ponentes = new ArrayList<>();
+
     public PonentesFragment() {
         // Required empty public constructor
     }
@@ -56,6 +60,8 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Interactor.crearBD(getContext());
         setHasOptionsMenu(true);
     }
 
@@ -81,14 +87,37 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
         //Incluye una linea divisora entre cada renglon de la lista
         ponentesRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-        //Lista seccionada alfabeticamente y buscable | Basado en:
-        //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
-        //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
-        ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(Interactor.obtenerPonentes())));
-        ponenteAdapter.setOnPonenteClickListener(this);
-        ponentesRecyclerView.setAdapter(ponenteAdapter);
+        //https://stackoverflow.com/questions/23833977/android-wait-for-volley-response-to-return
+        //Factory method design pattern solution
+        //Se ejecuta asyncronramente la recuperación de los ponentes
+        Interactor.obtenerPonentes(getContext(), new ServerCallback() {
+            @Override
+            public void onSuccessPonentes(ArrayList<Ponente> lista) {
+                //Log.i("PONENTES_AFTER", "Callback de ponentes");
 
-        ponenteAdapter.notifyDataSetChanged();
+                //Recibimos la lista de ponentes
+                ponentes = lista;
+
+                Log.i("PONENTES_CHECK_LISTA", ponentes.toString());
+
+                //La lista se debe insertar en la vista desde el hilo de la UI principal
+                //https://stackoverflow.com/questions/3875184/cant-create-handler-inside-thread-that-has-not-called-looper-prepare
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        //Lista seccionada alfabeticamente y buscable | Basado en:
+                        //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
+                        //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
+                        ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(ponentes)));
+                        ponenteAdapter.setOnPonenteClickListener(PonentesFragment.this);
+                        ponentesRecyclerView.setAdapter(ponenteAdapter);
+                        ponenteAdapter.notifyDataSetChanged();
+                    }
+                });
+
+            }
+        });
+
+        //Log.i("PONENTES_BEFORE", "Antes de que acabe obtenerPonentes");
     }
 
     @Override
@@ -167,27 +196,30 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
     ArrayList<Ponente> addAlphabets(ArrayList<Ponente> list) {
         int i = 0;
         ArrayList<Ponente> customList = new ArrayList<Ponente>();
-        Ponente firstMember = new Ponente();
-        firstMember.setNombre(String.valueOf(list.get(0).getNombre().charAt(0)));
-        firstMember.setType(1);
-        customList.add(firstMember);
-        for (i = 0; i < list.size() - 1; i++) {
-            Ponente teamMember = new Ponente();
-            char name1 = list.get(i).getNombre().charAt(0);
-            char name2 = list.get(i + 1).getNombre().charAt(0);
-            if (name1 == name2) {
-                list.get(i).setType(2);
-                customList.add(list.get(i));
-            } else {
-                list.get(i).setType(2);
-                customList.add(list.get(i));
-                teamMember.setNombre(String.valueOf(name2));
-                teamMember.setType(1);
-                customList.add(teamMember);
+
+        if (!list.isEmpty()) {
+            Ponente firstMember = new Ponente();
+            firstMember.setNombre(String.valueOf(list.get(0).getNombre().charAt(0)));
+            firstMember.setType(1);
+            customList.add(firstMember);
+            for (i = 0; i < list.size() - 1; i++) {
+                Ponente teamMember = new Ponente();
+                char name1 = list.get(i).getNombre().charAt(0);
+                char name2 = list.get(i + 1).getNombre().charAt(0);
+                if (name1 == name2) {
+                    list.get(i).setType(2);
+                    customList.add(list.get(i));
+                } else {
+                    list.get(i).setType(2);
+                    customList.add(list.get(i));
+                    teamMember.setNombre(String.valueOf(name2));
+                    teamMember.setType(1);
+                    customList.add(teamMember);
+                }
             }
+            list.get(i).setType(2);
+            customList.add(list.get(i));
         }
-        list.get(i).setType(2);
-        customList.add(list.get(i));
         return customList;
     }
 }
