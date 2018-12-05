@@ -17,8 +17,12 @@ import com.appgee.proyectoandroid.activities.PonenciaDetalleActivity;
 import com.appgee.proyectoandroid.activities.PonenciaEvaluacionActivity;
 import com.appgee.proyectoandroid.models.Ponencia;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.PonenciaViewHolder> implements View.OnClickListener {
     private List<Ponencia> ponencias;
@@ -69,13 +73,22 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         viewHolder.btnPonenciaAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(Intent.ACTION_INSERT);
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd 'de' MMMM 'de' yyyy HH:mm", new Locale("es", "MX"));
+                try {
+                    calendar.setTime(sdf.parse(ponencia.getFecha() + " " + ponencia.getHora()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-            intent.setType("vnd.android.cursor.item/event");
-            intent.setData(CalendarContract.Events.CONTENT_URI);
-            intent.putExtra(CalendarContract.Events.TITLE, ponencia.getTitulo());
+                Intent intent = new Intent(Intent.ACTION_INSERT);
 
-            view.getContext().startActivity(intent);
+                intent.setData(CalendarContract.Events.CONTENT_URI);
+                intent.setType("vnd.android.cursor.item/event");
+                intent.putExtra(CalendarContract.Events.TITLE, "CILLT: " + ponencia.getTitulo());
+                intent.putExtra(CalendarContract.Events.EVENT_LOCATION, ponencia.getLugar());
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, calendar.getTimeInMillis());
+                view.getContext().startActivity(intent);
             }
         });
     }
