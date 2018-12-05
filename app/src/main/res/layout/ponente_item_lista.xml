@@ -14,16 +14,16 @@
 
         <ImageView
             android:id="@+id/iv_imagen"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
-            android:layout_weight="2"
+            android:layout_weight="5"
             app:srcCompat="@drawable/ic_usuario" />
 
         <LinearLayout
             android:id="@+id/renglon"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_imagen"
             android:layout_weight="20"
