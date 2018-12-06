@@ -44,7 +44,7 @@ public class ProgramaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_programa, container, false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        adapter = new ProgramaAdapter(Interactor.obtenerPonencias());
+        adapter = new ProgramaAdapter(Interactor.obtenerPonencias(getContext()));
 
         rvPrograma = view.findViewById(R.id.rvPrograma);
         rvPrograma.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));

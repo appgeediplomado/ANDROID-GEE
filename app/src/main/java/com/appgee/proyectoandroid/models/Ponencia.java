@@ -1,16 +1,26 @@
 package com.appgee.proyectoandroid.models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity
 public class Ponencia implements Serializable {
+    @PrimaryKey
     private int id;
+    private String titulo;
+    private String sinopsis;
+    private String modalidad;
+    private String nombrePonente;
     private String fecha;
     private String hora;
     private String lugar;
-    private String modalidad;
-    private String nombrePonente;
-    private String sinopsis;
-    private String titulo;
+    private Boolean agendada = false;
+
+    public Ponencia() {
+
+    }
 
     public Ponencia(String fecha, String hora, String titulo) {
         this.fecha = fecha;
@@ -80,5 +90,13 @@ public class Ponencia implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public Boolean getAgendada() {
+        return agendada;
+    }
+
+    public void setAgendada(Boolean agendada) {
+        this.agendada = agendada;
     }
 }

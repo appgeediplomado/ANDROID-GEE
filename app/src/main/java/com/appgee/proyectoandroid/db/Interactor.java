@@ -10,6 +10,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.appgee.proyectoandroid.RemoteData.VolleyService;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.models.Ponente;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
@@ -34,7 +35,9 @@ public class Interactor {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
     }
 
-    public static ArrayList<Ponencia> obtenerPonencias() {
+    public static ArrayList<Ponencia> obtenerPonencias(Context context) {
+        VolleyService.getInstance(context).getPonencias();
+
         ArrayList<Ponencia> ponencias = new ArrayList<Ponencia>();
         Ponencia ponencia;
 
