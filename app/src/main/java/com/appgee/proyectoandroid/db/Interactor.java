@@ -21,7 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Interactor {
 
@@ -35,31 +34,15 @@ public class Interactor {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
     }
 
-    public static ArrayList<Ponencia> obtenerPonencias(Context context) {
-        VolleyService.getInstance(context).getPonencias();
-
-        ArrayList<Ponencia> ponencias = new ArrayList<Ponencia>();
-        Ponencia ponencia;
-
-        ponencia  = new Ponencia("Miércoles 1 de agosto de 2018", "16:00", "Antropónimos en la cultura shipibo-conibo");
-        ponencia.setNombrePonente("Karen Napan Gómez");
-        ponencia.setLugar("Salón 102A");
-        ponencia.setModalidad("Ponencia");
-        ponencias.add(ponencia);
-
-        ponencia = new Ponencia("Jueves 2 de agosto de 2018", "10:00", "Educaplay para la enseñanza de lenguas");
-        ponencia.setNombrePonente("Sonia Cruz Techica");
-        ponencia.setLugar("Laboratorio 3");
-        ponencia.setModalidad("Taller");
-        ponencias.add(ponencia);
-
-        ponencia = new Ponencia("Viernes 3 de agosto de 2018", "12:35", "Storytelling como estrategia didáctica en la enseñanza de idiomas");
-        ponencia.setNombrePonente("Eduardo Luis Altamirano Chávez");
-        ponencia.setLugar("Salón 106A");
-        ponencia.setModalidad("Ponencia");
-        ponencias.add(ponencia);
-
-        return ponencias;
+    public static void obtenerPonencias(Context context, final ServerCallback<Ponencia> callback) {
+        VolleyService.getInstance(context).getPonencias(new ServerCallback<Ponencia>() {
+            @Override
+            public void onSuccessLista(ArrayList<Ponencia> lista) {
+                // Agregar ponencias a la bd local
+                // updatePonencias(lista);
+                callback.onSuccessLista(lista);
+            }
+        });
     }
 
     /**
@@ -70,7 +53,7 @@ public class Interactor {
      * @param context Contexto de la actividad, para poder mostrar un Toast en caso de error
      * @param callback Interfaz que devuelve la lista de ponentes y se ejecuta en el fragment despues del onResponse
      */
-    public static void obtenerPonentes(final Context context, final ServerCallback callback) {
+    public static void obtenerPonentes(final Context context, final ServerCallback<Ponente> callback) {
 
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -96,7 +79,7 @@ public class Interactor {
                                 //Actualizar Ponentes en BD
                                 updatePonentes(ponentes);
 
-                                callback.onSuccessPonentes(ponentes);
+                                callback.onSuccessLista(ponentes);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -114,7 +97,7 @@ public class Interactor {
                 } else {
                     Log.i("PONENTES_WS", "Se recuperan de la BD");
                     //Se recuperan los ponentes de la BD local
-                    callback.onSuccessPonentes(ponentes);
+                    callback.onSuccessLista(ponentes);
                 }
 
                 return null;

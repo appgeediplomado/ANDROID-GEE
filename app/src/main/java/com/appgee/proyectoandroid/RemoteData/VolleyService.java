@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.appgee.proyectoandroid.models.Ponencia;
+import com.appgee.proyectoandroid.webservices.ServerCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +45,7 @@ public class VolleyService {
         requestQueue.add(request);
     }
 
-    public ArrayList<Ponencia> getPonencias() {
+    public void getPonencias(final ServerCallback callback) {
         String url = "http://roman.cele.unam.mx/wsgee/trabajos";
 
         JsonObjectRequest request = new JsonObjectRequest(
@@ -64,8 +65,17 @@ public class VolleyService {
 
                                 Ponencia ponencia = new Ponencia();
                                 ponencia.setId(data.getInt("id"));
+                                ponencia.setTitulo(data.getString("titulo"));
+                                ponencia.setModalidad(data.getString("modalidad"));
+                                ponencia.setNombrePonente(data.getString("nombrePonente"));
+                                ponencia.setFecha(data.getString("fecha"));
+                                ponencia.setHora(data.getString("hora"));
+                                ponencia.setLugar(data.getString("lugar"));
 
+                                ponencias.add(ponencia);
                             }
+
+                            callback.onSuccessLista(ponencias);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -81,7 +91,5 @@ public class VolleyService {
         );
 
         VolleyService.getInstance(context).addRequest(request);
-
-        return null;
     }
 }

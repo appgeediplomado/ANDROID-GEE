@@ -20,6 +20,10 @@ import android.view.ViewGroup;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.adapters.ProgramaAdapter;
 import com.appgee.proyectoandroid.db.Interactor;
+import com.appgee.proyectoandroid.models.Ponencia;
+import com.appgee.proyectoandroid.webservices.ServerCallback;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,12 +48,19 @@ public class ProgramaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_programa, container, false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        adapter = new ProgramaAdapter(Interactor.obtenerPonencias(getContext()));
 
+//        adapter = new ProgramaAdapter(Interactor.obtenerPonencias(getContext()));
         rvPrograma = view.findViewById(R.id.rvPrograma);
         rvPrograma.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rvPrograma.setLayoutManager(manager);
-        rvPrograma.setAdapter(adapter);
+
+        Interactor.obtenerPonencias(getContext(), new ServerCallback<Ponencia>() {
+            @Override
+            public void onSuccessLista(ArrayList<Ponencia> ponencias) {
+                adapter = new ProgramaAdapter(ponencias);
+                rvPrograma.setAdapter(adapter);
+            }
+        });
 
         return view;
     }

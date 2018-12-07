@@ -90,9 +90,9 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
         //https://stackoverflow.com/questions/23833977/android-wait-for-volley-response-to-return
         //Factory method design pattern solution
         //Se ejecuta asyncronramente la recuperación de los ponentes
-        Interactor.obtenerPonentes(getContext(), new ServerCallback() {
+        Interactor.obtenerPonentes(getContext(), new ServerCallback<Ponente>() {
             @Override
-            public void onSuccessPonentes(ArrayList<Ponente> lista) {
+            public void onSuccessLista(ArrayList<Ponente> lista) {
                 //Log.i("PONENTES_AFTER", "Callback de ponentes");
 
                 //Recibimos la lista de ponentes
