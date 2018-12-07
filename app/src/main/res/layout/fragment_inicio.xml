@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_usuario"
-                android:inputType="textCapSentences"
+                android:inputType="textEmailAddress"
                 android:theme="@style/EditText" />
         </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
-                android:inputType="textCapSentences"
+                android:inputType="textPassword"
                 android:theme="@style/EditText" />
         </android.support.design.widget.TextInputLayout>
 
