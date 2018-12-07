@@ -11,16 +11,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.Session.SessionGee;
 import com.appgee.proyectoandroid.fragments.AsistenciaFragment;
+import com.appgee.proyectoandroid.fragments.AsistenciaFragmentSinSesion;
 import com.appgee.proyectoandroid.fragments.InicioFragment;
 import com.appgee.proyectoandroid.fragments.MapaFragment;
 import com.appgee.proyectoandroid.fragments.PonentesFragment;
 import com.appgee.proyectoandroid.fragments.ProgramaFragment;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String BACK_STACK_PRIMER_NIVEL = "primer_nivel";
@@ -30,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
+    private SessionGee sesion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sesion = new SessionGee(this);
 
         // Establecer nuestra ToolBar como ActionBar
         toolbar = findViewById(R.id.toolbar);
@@ -68,9 +73,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        MenuItem menuItem = navigationView.getMenu().getItem(0);
+
+        MenuItem menuItem;
+        if (sesion.usuarioTieneSesionActiva()){
+            menuItem = navigationView.getMenu().getItem(1);
+            reemplazarFragment(new ProgramaFragment(), menuItem.getTitle().toString(), BACK_STACK_RAIZ);
+        }
+        else{
+            menuItem = navigationView.getMenu().getItem(0);
+            reemplazarFragment(new InicioFragment(), menuItem.getTitle().toString(), BACK_STACK_RAIZ);
+        }
         menuItem.setChecked(true);
-        reemplazarFragment(new InicioFragment(), menuItem.getTitle().toString(), BACK_STACK_RAIZ);
+
     }
 
     private Fragment seleccionaFragment(Integer menuItemId) {
@@ -78,7 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuItemId) {
             case R.id.item_inicio:
-                fragment = new InicioFragment();
+                if (sesion.usuarioTieneSesionActiva())
+                    fragment = new ProgramaFragment();
+                else
+                    fragment = new InicioFragment();
 
                 break;
 
@@ -93,8 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.item_asistencia:
-                fragment = new AsistenciaFragment();
-
+                if (sesion.usuarioTieneSesionActiva())
+                    fragment = new AsistenciaFragment();
+                else
+                    fragment = new AsistenciaFragmentSinSesion();
                 break;
 
             case R.id.item_mapa:
@@ -129,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         transaction.commit();
-
         getSupportActionBar().setTitle(titulo);
     }
 
