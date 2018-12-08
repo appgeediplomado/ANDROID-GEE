@@ -54,7 +54,7 @@ public class Interactor {
      * @param context Contexto de la actividad, para poder mostrar un Toast en caso de error
      * @param callback Interfaz que devuelve la lista de ponentes y se ejecuta en el fragment despues del onResponse
      */
-    public static void obtenerPonentes(final Context context, final ServerCallback callback, final int idPonente) {
+    public static void obtenerPonentes(final Context context, final ServerCallback<Ponente> callback, final int idPonente) {
 
         new AsyncTask<Void, Void, Void>() {
             @Override
