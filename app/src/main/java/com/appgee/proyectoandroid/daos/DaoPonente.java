@@ -21,7 +21,7 @@ public interface DaoPonente {
     List<Ponente> fetchAllPonentes();
 
     @Query("SELECT * FROM Ponente WHERE id =:ponenteId")
-    LiveData<Ponente> getPonente(int ponenteId);
+    List<Ponente> getPonente(int ponenteId);
 
     @Query("SELECT id FROM Ponente WHERE id =:ponenteId")
     int getIdPonente(int ponenteId);
@@ -29,6 +29,8 @@ public interface DaoPonente {
     @Update
     void updatePonente(Ponente ponente);
 
+    @Query("UPDATE ponente SET biodata = :biodata WHERE id =:ponenteId")
+    int updatePonenteById(int ponenteId, String biodata);
 
     @Delete
     void deletePonente(Ponente ponente);
