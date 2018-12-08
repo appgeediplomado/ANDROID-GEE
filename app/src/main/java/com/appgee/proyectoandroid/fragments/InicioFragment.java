@@ -1,11 +1,12 @@
 package com.appgee.proyectoandroid.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -15,8 +16,18 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.Session.SessionGee;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 import java.util.HashMap;
@@ -62,34 +73,17 @@ public class InicioFragment extends Fragment {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(camposValidos())
                 {
-                    SessionGee sesionGee = new SessionGee(getContext());
-
-                    HashMap<String, String> datosSesion = new HashMap<String, String>();
-                    datosSesion.put(sesionGee.KEY_ID, "1");
-                    datosSesion.put(sesionGee.KEY_NOMBRE, "Nombre y Apellidos");
-                    datosSesion.put(sesionGee.KEY_CORREO, "correo@dominio.com");
-
-                    sesionGee.crearSesion(datosSesion);
-
-
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.content_frame, new ProgramaFragment());
-                    transaction.commit();
-
-                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Programa");
-
-                    MenuItem menuItem = navigationView.getMenu().getItem(1);
-                    menuItem.setChecked(true);
-
+                    validarUsuario();
                 }
             }
         });
     }
 
 
-    public boolean camposValidos(){
+    private boolean camposValidos(){
 
         if(txtUsuario.getText().toString().trim().isEmpty()){
             txtUsuario.setError("Este campo es requerido.");
@@ -108,9 +102,65 @@ public class InicioFragment extends Fragment {
         }
 
         return true;
-
     }
 
+    private void validarUsuario(){
 
+        String URL = "http://roman.cele.unam.mx/wsgee/asistentes/sesion/"+txtUsuario.getText().toString().trim();
+        
+        JsonObjectRequest stringRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject asistente = response.getJSONObject("asistente");
 
+                            if(!asistente.isNull("id")){
+                                SessionGee sesionGee = new SessionGee(getContext());
+
+                                HashMap<String, String> datosSesion = new HashMap<String, String>();
+                                datosSesion.put(sesionGee.KEY_ID, asistente.getString("id"));
+                                datosSesion.put(sesionGee.KEY_NOMBRE, asistente.getString("nombre") + " " + asistente.getString("apellidos"));
+                                datosSesion.put(sesionGee.KEY_CORREO, asistente.getString("correo"));
+                                sesionGee.crearSesion(datosSesion);
+
+                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                transaction.replace(R.id.content_frame, new ProgramaFragment());
+                                transaction.commit();
+
+                                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Programa");
+
+                                MenuItem menuItem = navigationView.getMenu().getItem(1);
+                                menuItem.setChecked(true);
+                            }
+
+                        } catch (JSONException e) {
+                            Toast.makeText(getContext(), "Error al validar credenciales", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.Theme_AppCompat_Light_Dialog_Alert);
+                        builder.setTitle("Error")
+                                .setMessage("Usuario no encontrado, verifique.")
+                                .setCancelable(false)
+                                .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
 }
