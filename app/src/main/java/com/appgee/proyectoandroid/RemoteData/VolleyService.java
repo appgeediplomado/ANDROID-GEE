@@ -92,4 +92,48 @@ public class VolleyService {
 
         VolleyService.getInstance(context).addRequest(request);
     }
+
+    public void getSinopsis(Integer trabajoId, final ServerCallback callback) {
+        String url = "http://roman.cele.unam.mx/wsgee/trabajos/" + trabajoId;
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject data = response.getJSONObject("datos");
+
+                            Ponencia ponencia = new Ponencia();
+                            ponencia.setId(data.getInt("id"));
+                            ponencia.setTitulo(data.getString("titulo"));
+                            ponencia.setModalidad(data.getString("modalidad"));
+                            ponencia.setNombrePonente(data.getString("nombrePonente"));
+                            ponencia.setFecha(data.getString("fecha"));
+                            ponencia.setHora(data.getString("hora"));
+                            ponencia.setLugar(data.getString("lugar"));
+                            ponencia.setSinopsis(data.getString("sinopsis"));
+
+                            ArrayList<Ponencia> ponencias = new ArrayList<Ponencia>();
+                            ponencias.add(ponencia);
+
+                            callback.onSuccessLista(ponencias);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
+        VolleyService.getInstance(context).addRequest(request);
+    }
 }

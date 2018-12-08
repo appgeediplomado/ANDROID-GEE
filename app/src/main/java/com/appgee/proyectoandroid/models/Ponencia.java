@@ -5,9 +5,9 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity
+@Entity(tableName = "ponencia")
 public class Ponencia implements Serializable {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = false)
     private int id;
     private String titulo;
     private String sinopsis;
@@ -20,12 +20,6 @@ public class Ponencia implements Serializable {
 
     public Ponencia() {
 
-    }
-
-    public Ponencia(String fecha, String hora, String titulo) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.titulo = titulo;
     }
 
     public int getId() {

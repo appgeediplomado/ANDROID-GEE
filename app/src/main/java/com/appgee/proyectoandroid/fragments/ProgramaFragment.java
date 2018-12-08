@@ -49,11 +49,11 @@ public class ProgramaFragment extends Fragment {
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
-//        adapter = new ProgramaAdapter(Interactor.obtenerPonencias(getContext()));
         rvPrograma = view.findViewById(R.id.rvPrograma);
         rvPrograma.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rvPrograma.setLayoutManager(manager);
 
+        Interactor.crearBD(getContext());
         Interactor.obtenerPonencias(getContext(), new ServerCallback<Ponencia>() {
             @Override
             public void onSuccessLista(ArrayList<Ponencia> ponencias) {

@@ -39,7 +39,33 @@ public class Interactor {
             @Override
             public void onSuccessLista(ArrayList<Ponencia> lista) {
                 // Agregar ponencias a la bd local
-                // updatePonencias(lista);
+                guardaPonencias(lista);
+
+                callback.onSuccessLista(lista);
+            }
+        });
+    }
+
+    public static void guardaPonencias(final ArrayList<Ponencia> ponencias) {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                for (Ponencia ponencia: ponencias) {
+                    appDatabase.daoPonencia().guardar(ponencia);
+                }
+
+                return null;
+            }
+        }.execute();
+    }
+
+    public static void obtenerSinopsis(Integer trabajoId, Context context, final ServerCallback<Ponencia> callback) {
+        VolleyService.getInstance(context).getSinopsis(trabajoId, new ServerCallback<Ponencia>() {
+            @Override
+            public void onSuccessLista(ArrayList<Ponencia> lista) {
+                // Agregar sinposis a la bd local
+
                 callback.onSuccessLista(lista);
             }
         });

@@ -9,7 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponencia;
+import com.appgee.proyectoandroid.webservices.ServerCallback;
+
+import java.util.ArrayList;
 
 public class PonenciaDetalleActivity extends BaseActivity {
     TextView tvTituloPonencia;
@@ -19,6 +23,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
     TextView tvLugarPonencia;
     Button btnAgendarPonencia;
     Button btnCalificarPonencia;
+    TextView tvSinopsis;
 
     Ponencia ponencia = null;
 
@@ -35,6 +40,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
         tvLugarPonencia = findViewById(R.id.tvLugarPonencia);
         btnAgendarPonencia = findViewById(R.id.btnAgendarPonencia);
         btnCalificarPonencia = findViewById(R.id.btnCalificarPonencia);
+        tvSinopsis =  findViewById(R.id.tvAbstractPonencia);
 
         ponencia = (Ponencia) getIntent().getSerializableExtra("ponencia");
 
@@ -44,6 +50,16 @@ public class PonenciaDetalleActivity extends BaseActivity {
             tvFechaPonencia.setText(ponencia.getFecha());
             tvHoraPonencia.setText(ponencia.getHora());
             tvLugarPonencia.setText(ponencia.getLugar());
+
+            Interactor.obtenerSinopsis(ponencia.getId(), this, new ServerCallback<Ponencia>() {
+                @Override
+                public void onSuccessLista(ArrayList<Ponencia> lista) {
+                    if (lista.size() > 0) {
+                        Ponencia ponencia = lista.get(0);
+                        tvSinopsis.setText(ponencia.getSinopsis());
+                    }
+                }
+            });
 
             btnAgendarPonencia.setOnClickListener(new View.OnClickListener() {
                 @Override
