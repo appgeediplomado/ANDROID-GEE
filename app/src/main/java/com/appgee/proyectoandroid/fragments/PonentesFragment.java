@@ -1,11 +1,9 @@
 package com.appgee.proyectoandroid.fragments;
 
 
-import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -96,7 +94,6 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
                 //Log.i("PONENTES_AFTER", "Callback de ponentes");
 
                 //Recibimos la lista de ponentes
-//                ponentes = lista;
                 ponentes = new ArrayList<Ponente>(lista);
 
                 Log.i("PONENTES_CHECK_LISTA", ponentes.toString());
@@ -116,7 +113,7 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
                 });
 
             }
-        });
+        }, Interactor.NO_ID);
 
         //Log.i("PONENTES_BEFORE", "Antes de que acabe obtenerPonentes");
     }

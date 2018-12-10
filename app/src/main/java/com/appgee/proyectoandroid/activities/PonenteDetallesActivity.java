@@ -1,16 +1,22 @@
 package com.appgee.proyectoandroid.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponente;
+import com.appgee.proyectoandroid.webservices.ServerCallback;
+
+import java.util.ArrayList;
 
 public class PonenteDetallesActivity extends BaseActivity {
     TextView tvNombre;
     TextView tvApellidos;
     TextView tvInstitucion;
+    TextView tvBiodata;
 
     Ponente ponente = null;
 
@@ -23,6 +29,7 @@ public class PonenteDetallesActivity extends BaseActivity {
         tvNombre = findViewById(R.id.tv_nombre_det);
         tvApellidos = findViewById(R.id.tv_apellidos_det);
         tvInstitucion = findViewById(R.id.tv_institucion_det);
+        tvBiodata = findViewById(R.id.tv_biodata);
 
         ponente = (Ponente) getIntent().getSerializableExtra("ponente");
 
@@ -30,7 +37,21 @@ public class PonenteDetallesActivity extends BaseActivity {
             tvNombre.setText(ponente.getNombre());
             tvApellidos.setText(ponente.getApellidos());
             tvInstitucion.setText(ponente.getInstitucion());
+            tvBiodata.setText("");
         }
+
+        //Se ejecuta asyncronramente la recuperación de los ponentes
+        Interactor.obtenerPonentes(this.getBaseContext(), new ServerCallback<Ponente>() {
+            @Override
+            public void onSuccessLista(ArrayList<Ponente> lista) {
+                Log.i("PONENTES_ACTIVITY_DET", "Callback de ponentes");
+                //Recibimos la lista de ponentes
+                Ponente registro = lista.get(0);
+                Log.i("PONENTES_CHECK_DET", registro.toString());
+                Log.i("PONENTES_CHECK_BIO", registro.getBiodata());
+                tvBiodata.setText(registro.getBiodata());
+            }
+        }, ponente.getId());
     }
 
     @Override
