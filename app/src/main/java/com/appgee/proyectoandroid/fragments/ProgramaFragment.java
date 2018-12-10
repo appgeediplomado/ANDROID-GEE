@@ -57,13 +57,15 @@ public class ProgramaFragment extends Fragment {
         Interactor.obtenerPonencias(getContext(), new ServerCallback<Ponencia>() {
             @Override
             public void onSuccessLista(final ArrayList<Ponencia> ponencias) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter = new ProgramaAdapter(ponencias);
-                        rvPrograma.setAdapter(adapter);
-                    }
-                });
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter = new ProgramaAdapter(ponencias);
+                            rvPrograma.setAdapter(adapter);
+                        }
+                    });
+                }
             }
         });
 

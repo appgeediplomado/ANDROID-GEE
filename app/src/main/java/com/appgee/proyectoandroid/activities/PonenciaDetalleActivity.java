@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.Utils.Utils;
 import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
@@ -64,6 +65,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
             btnAgendarPonencia.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Utils.agendarEvento(v.getContext(), ponencia.getTitulo(), ponencia.getLugar(), ponencia.getFecha(), ponencia.getHora());
                     Toast.makeText(v.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
                 }
             });

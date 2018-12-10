@@ -1,5 +1,6 @@
 package com.appgee.proyectoandroid.db;
 
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -90,6 +91,17 @@ public class Interactor {
                 callback.onSuccessLista(lista);
             }
         });
+    }
+
+    public static void guardarPonencia(final Ponencia ponencia) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.daoPonencia().actualizar(ponencia);
+
+                return null;
+            }
+        }.execute();
     }
 
     /**
