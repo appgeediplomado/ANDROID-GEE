@@ -34,16 +34,30 @@ public class Interactor {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
     }
 
-    public static void obtenerPonencias(Context context, final ServerCallback<Ponencia> callback) {
-        VolleyService.getInstance(context).getPonencias(new ServerCallback<Ponencia>() {
+    public static void obtenerPonencias(final Context context, final ServerCallback<Ponencia> callback) {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void onSuccessLista(ArrayList<Ponencia> lista) {
-                // Agregar ponencias a la bd local
-                guardaPonencias(lista);
+            protected Void doInBackground(Void... voids) {
+                int cuentaPonencias = appDatabase.daoPonencia().cuentaPonencias();
 
-                callback.onSuccessLista(lista);
+                if (cuentaPonencias == 0) {
+                    VolleyService.getInstance(context).getPonencias(new ServerCallback<Ponencia>() {
+                        @Override
+                        public void onSuccessLista(ArrayList<Ponencia> lista) {
+                            // Agregar ponencias a la bd local
+                            guardaPonencias(lista);
+
+                            callback.onSuccessLista(lista);
+                        }
+                    });
+                } else {
+                    ArrayList<Ponencia> ponencias = (ArrayList<Ponencia>) appDatabase.daoPonencia().buscaTodas();
+                    callback.onSuccessLista(ponencias);
+                }
+
+                return null;
             }
-        });
+        }.execute();
     }
 
     public static void guardaPonencias(final ArrayList<Ponencia> ponencias) {
@@ -52,7 +66,13 @@ public class Interactor {
             @Override
             protected Void doInBackground(Void... voids) {
                 for (Ponencia ponencia: ponencias) {
-                    appDatabase.daoPonencia().guardar(ponencia);
+                    int id = appDatabase.daoPonencia().buscarId(ponencia.getId());
+
+                    if (id == 0) {
+                        appDatabase.daoPonencia().guardar(ponencia);
+                    } else {
+                        appDatabase.daoPonencia().actualizar(ponencia);
+                    }
                 }
 
                 return null;
@@ -80,11 +100,9 @@ public class Interactor {
      * @param callback Interfaz que devuelve la lista de ponentes y se ejecuta en el fragment despues del onResponse
      */
     public static void obtenerPonentes(final Context context, final ServerCallback<Ponente> callback) {
-
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-
                 if (hayNuevosPonentes()) {
                     Log.i("PONENTES_WS", "Se consultara el WebService");
                     String url = "http://roman.cele.unam.mx/wsgee/ponentes";
