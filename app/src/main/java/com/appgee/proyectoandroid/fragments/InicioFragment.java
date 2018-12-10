@@ -107,7 +107,7 @@ public class InicioFragment extends Fragment {
     private void validarUsuario(){
 
         String URL = "http://roman.cele.unam.mx/wsgee/asistentes/sesion/"+txtUsuario.getText().toString().trim();
-        
+
         JsonObjectRequest stringRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,

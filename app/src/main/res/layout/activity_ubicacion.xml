@@ -39,18 +39,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tvNombreEdificio" />
 
     <ImageView
-        android:id="@+id/ivLogoGee"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
+        android:id="@+id/ivUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorTextGris"
-        android:scaleType="fitCenter"
+        android:layout_marginEnd="5dp"
+        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreUbicacion" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUbicacion"
+        app:layout_constraintVertical_bias="0.038" />
 </android.support.constraint.ConstraintLayout>
