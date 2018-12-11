@@ -66,7 +66,6 @@ public class PonenciaDetalleActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Utils.agendarEvento(v.getContext(), ponencia.getTitulo(), ponencia.getLugar(), ponencia.getFecha(), ponencia.getHora());
-                    Toast.makeText(v.getContext(), "This is just a demo!", Toast.LENGTH_SHORT).show();
                 }
             });
 
