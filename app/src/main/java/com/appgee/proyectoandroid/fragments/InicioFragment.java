@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -113,7 +114,7 @@ public class InicioFragment extends Fragment {
 
     private void validarUsuario(){
 
-        String URL = Config.WS_BASE_URL + "/asistentes/sesion/"+txtUsuario.getText().toString().trim();
+        String URL = Config.WS_BASE_URL + "/asistentes/sesion/" + txtUsuario.getText().toString().trim();
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -124,6 +125,12 @@ public class InicioFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONObject asistente = response.getJSONObject("asistente");
+
+                            String password = asistente.getString("password");
+
+                            if (txtPassword.getText().toString() != password) {
+
+                            }
 
                             if(!asistente.isNull("id")){
                                 SessionGee sesionGee = new SessionGee(getContext());
