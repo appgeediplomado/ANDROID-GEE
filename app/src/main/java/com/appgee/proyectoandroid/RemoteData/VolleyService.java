@@ -10,6 +10,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.appgee.proyectoandroid.Utils.Config;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
 
@@ -46,7 +47,7 @@ public class VolleyService {
     }
 
     public void getPonencias(final ServerCallback callback) {
-        String url = "http://roman.cele.unam.mx/wsgee/trabajos";
+        String url = Config.WS_BASE_URL + "/trabajos";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -94,7 +95,7 @@ public class VolleyService {
     }
 
     public void getSinopsis(Integer trabajoId, final ServerCallback callback) {
-        String url = "http://roman.cele.unam.mx/wsgee/trabajos/" + trabajoId;
+        String url = Config.WS_BASE_URL + "/trabajos/" + trabajoId;
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,

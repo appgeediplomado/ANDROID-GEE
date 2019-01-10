@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.appgee.proyectoandroid.RemoteData.VolleyService;
+import com.appgee.proyectoandroid.Utils.Config;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.models.Ponente;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
@@ -122,10 +123,10 @@ public class Interactor {
                     Log.i("PONENTES_WS", "Se consultara el WebService");
 
                     //Por defecto consulta a todos, si no se especifica el id del ponente
-                    String url = "http://roman.cele.unam.mx/wsgee/ponentes";
+                    String url = Config.WS_BASE_URL + "/ponentes";
 
                     if (idPonente != NO_ID) {
-                        url = "http://roman.cele.unam.mx/wsgee/ponentes/" + idPonente;
+                        url = Config.WS_BASE_URL + "/ponentes/" + idPonente;
                     }
                     Log.i("PONENTES_WS_URL", url);
 

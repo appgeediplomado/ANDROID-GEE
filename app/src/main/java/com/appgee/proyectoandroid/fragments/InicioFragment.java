@@ -27,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.Session.SessionGee;
+import com.appgee.proyectoandroid.Utils.Config;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -112,7 +113,7 @@ public class InicioFragment extends Fragment {
 
     private void validarUsuario(){
 
-        String URL = "http://roman.cele.unam.mx/wsgee/asistentes/sesion/"+txtUsuario.getText().toString().trim();
+        String URL = Config.WS_BASE_URL + "/asistentes/sesion/"+txtUsuario.getText().toString().trim();
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(
                 Request.Method.GET,

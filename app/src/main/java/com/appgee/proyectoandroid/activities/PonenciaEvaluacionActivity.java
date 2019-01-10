@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.RemoteData.VolleyService;
 import com.appgee.proyectoandroid.Session.SessionGee;
+import com.appgee.proyectoandroid.Utils.Config;
 import com.appgee.proyectoandroid.db.AppDatabase;
 import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponencia;
@@ -79,7 +80,7 @@ public class PonenciaEvaluacionActivity extends BaseActivity {
                     } else {
                         StringRequest request = new StringRequest(
                                 Request.Method.POST,
-                                "http://roman.cele.unam.mx/wsgee/asistentes/" + sesion.getUsuarioId() + "/retroalimentacion/" + ponencia.getId(),
+                                Config.WS_BASE_URL + "/asistentes/" + sesion.getUsuarioId() + "/retroalimentacion/" + ponencia.getId(),
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
