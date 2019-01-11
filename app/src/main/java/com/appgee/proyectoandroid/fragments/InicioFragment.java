@@ -79,11 +79,10 @@ public class InicioFragment extends Fragment {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                if (camposValidos()) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
-                if(camposValidos())
-                {
                     validarUsuario();
                 }
             }
@@ -128,11 +127,26 @@ public class InicioFragment extends Fragment {
 
                             String password = asistente.getString("password");
 
-                            if (txtPassword.getText().toString() != password) {
+                            Log.wtf("GEE_DEBUG", password);
+                            Log.wtf("GEE_DEBUG", txtPassword.getText().toString());
 
-                            }
+                            if (!password.equals(txtPassword.getText().toString())) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.Theme_AppCompat_Light_Dialog_Alert);
 
-                            if(!asistente.isNull("id")){
+                                builder.setTitle("Error")
+                                        .setMessage("Datos incorrectos, verifique.")
+                                        .setCancelable(false)
+                                        .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+
+                                AlertDialog alert = builder.create();
+
+                                alert.show();
+
+                            } else if(!asistente.isNull("id")){
                                 SessionGee sesionGee = new SessionGee(getContext());
 
                                 HashMap<String, String> datosSesion = new HashMap<String, String>();
