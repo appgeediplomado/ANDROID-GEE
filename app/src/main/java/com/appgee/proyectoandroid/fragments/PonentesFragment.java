@@ -100,18 +100,19 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
 
                 //La lista se debe insertar en la vista desde el hilo de la UI principal
                 //https://stackoverflow.com/questions/3875184/cant-create-handler-inside-thread-that-has-not-called-looper-prepare
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        //Lista seccionada alfabeticamente y buscable | Basado en:
-                        //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
-                        //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
-                        ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(ponentes)));
-                        ponenteAdapter.setOnPonenteClickListener(PonentesFragment.this);
-                        ponentesRecyclerView.setAdapter(ponenteAdapter);
-                        ponenteAdapter.notifyDataSetChanged();
-                    }
-                });
-
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                            //Lista seccionada alfabeticamente y buscable | Basado en:
+                            //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
+                            //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
+                            ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(ponentes)));
+                            ponenteAdapter.setOnPonenteClickListener(PonentesFragment.this);
+                            ponentesRecyclerView.setAdapter(ponenteAdapter);
+                            ponenteAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
             }
         }, Interactor.NO_ID);
 

@@ -1,6 +1,7 @@
 package com.appgee.proyectoandroid.fragments;
 
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,12 @@ import com.appgee.proyectoandroid.activities.UbicacionActivity;
  */
 public class MapaFragment extends Fragment implements View.OnClickListener {
 
+    static final int EDIFICIO_A_PLANTA_BAJA = 1;
+    static final int EDIFICIO_A_PRIMER_PISO = 2;
+    static final int EDIFICIO_A_TECER_PISO = 3;
+    static final int EDIFICIO_B_BASAMENTO = 4;
+    static final int EDIFICIO_B_PLANTA_BAJA = 5;
+    static final int EDIFICIO_B_PRIMER_PISO = 6;
     TextView mostrarPlantaBajaA;
     TextView mostrarPrimerPisoA;
     TextView mostrarTercerPisoA;
@@ -58,31 +65,38 @@ public class MapaFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         String edificio = null;
         String ubicacion = null;
+        int imgId = 0;
 
         switch (v.getId()){
             case R.id.tvPlantaBajaA:
                 edificio = "Edificio A";
                 ubicacion = mostrarPlantaBajaA.getText().toString();
+                imgId = EDIFICIO_A_PLANTA_BAJA;
                 break;
             case R.id.tvPrimerPisoA:
                 edificio = "Edificio A";
                 ubicacion = mostrarPrimerPisoA.getText().toString();
+                imgId = EDIFICIO_A_PRIMER_PISO;
                 break;
             case R.id.tvTercerPisoA:
                 edificio = "Edificio A";
                 ubicacion = mostrarTercerPisoA.getText().toString();
+                imgId = EDIFICIO_A_TECER_PISO;
                 break;
             case R.id.tvBasamentoB:
                 edificio = "Edificio B";
                 ubicacion = mostrarBasamentoB.getText().toString();
+                imgId = EDIFICIO_B_BASAMENTO;
                 break;
             case R.id.tvPlantaBajaB:
                 edificio = "Edificio B";
                 ubicacion = mostrarPlantaBajaB.getText().toString();
+                imgId = EDIFICIO_B_PLANTA_BAJA;
                 break;
             case R.id.tvPrimerPisoB:
                 edificio = "Edificio B";
                 ubicacion = mostrarPrimerPisoB.getText().toString();
+                imgId = EDIFICIO_B_PRIMER_PISO;
                 break;
                 default: ubicacion = "Sin ubicación";
         }
@@ -90,6 +104,7 @@ public class MapaFragment extends Fragment implements View.OnClickListener {
         Intent mostrarUbicacion = new Intent(getContext(), UbicacionActivity.class);
         mostrarUbicacion.putExtra("Edificio",edificio);
         mostrarUbicacion.putExtra("TituloUbicacion",ubicacion);
+        mostrarUbicacion.putExtra("ImgId",imgId);
         getActivity().startActivity(mostrarUbicacion);
     }
 }

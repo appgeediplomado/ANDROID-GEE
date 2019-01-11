@@ -1,5 +1,6 @@
 package com.appgee.proyectoandroid.db;
 
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -11,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.appgee.proyectoandroid.RemoteData.VolleyService;
+import com.appgee.proyectoandroid.Utils.Config;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.models.Ponente;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
@@ -35,16 +37,30 @@ public class Interactor {
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
     }
 
-    public static void obtenerPonencias(Context context, final ServerCallback<Ponencia> callback) {
-        VolleyService.getInstance(context).getPonencias(new ServerCallback<Ponencia>() {
+    public static void obtenerPonencias(final Context context, final ServerCallback<Ponencia> callback) {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void onSuccessLista(ArrayList<Ponencia> lista) {
-                // Agregar ponencias a la bd local
-                guardaPonencias(lista);
+            protected Void doInBackground(Void... voids) {
+                int cuentaPonencias = appDatabase.daoPonencia().cuentaPonencias();
 
-                callback.onSuccessLista(lista);
+                if (cuentaPonencias == 0) {
+                    VolleyService.getInstance(context).getPonencias(new ServerCallback<Ponencia>() {
+                        @Override
+                        public void onSuccessLista(ArrayList<Ponencia> lista) {
+                            // Agregar ponencias a la bd local
+                            guardaPonencias(lista);
+
+                            callback.onSuccessLista(lista);
+                        }
+                    });
+                } else {
+                    ArrayList<Ponencia> ponencias = (ArrayList<Ponencia>) appDatabase.daoPonencia().buscaTodas();
+                    callback.onSuccessLista(ponencias);
+                }
+
+                return null;
             }
-        });
+        }.execute();
     }
 
     public static void guardaPonencias(final ArrayList<Ponencia> ponencias) {
@@ -53,7 +69,13 @@ public class Interactor {
             @Override
             protected Void doInBackground(Void... voids) {
                 for (Ponencia ponencia: ponencias) {
-                    appDatabase.daoPonencia().guardar(ponencia);
+                    int id = appDatabase.daoPonencia().buscarId(ponencia.getId());
+
+                    if (id == 0) {
+                        appDatabase.daoPonencia().guardar(ponencia);
+                    } else {
+                        appDatabase.daoPonencia().actualizar(ponencia);
+                    }
                 }
 
                 return null;
@@ -70,6 +92,17 @@ public class Interactor {
                 callback.onSuccessLista(lista);
             }
         });
+    }
+
+    public static void guardarPonencia(final Ponencia ponencia) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.daoPonencia().actualizar(ponencia);
+
+                return null;
+            }
+        }.execute();
     }
 
     /**
@@ -90,10 +123,10 @@ public class Interactor {
                     Log.i("PONENTES_WS", "Se consultara el WebService");
 
                     //Por defecto consulta a todos, si no se especifica el id del ponente
-                    String url = "http://roman.cele.unam.mx/wsgee/ponentes";
+                    String url = Config.WS_BASE_URL + "/ponentes";
 
                     if (idPonente != NO_ID) {
-                        url = "http://roman.cele.unam.mx/wsgee/ponentes/" + idPonente;
+                        url = Config.WS_BASE_URL + "/ponentes/" + idPonente;
                     }
                     Log.i("PONENTES_WS_URL", url);
 

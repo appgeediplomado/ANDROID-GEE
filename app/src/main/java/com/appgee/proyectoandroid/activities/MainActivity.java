@@ -143,8 +143,14 @@ public class MainActivity extends AppCompatActivity {
         manager.popBackStack(BACK_STACK_PRIMER_NIVEL, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         transaction.replace(R.id.content_frame, fragment);
 
-        if (!(fragment instanceof InicioFragment)) {
-            transaction.addToBackStack(BACK_STACK_PRIMER_NIVEL);
+        if (sesion.usuarioTieneSesionActiva()) {
+            if (!(fragment instanceof ProgramaFragment)) {
+                transaction.addToBackStack(BACK_STACK_PRIMER_NIVEL);
+            }
+        } else {
+            if (!(fragment instanceof InicioFragment)) {
+                transaction.addToBackStack(BACK_STACK_PRIMER_NIVEL);
+            }
         }
 
         transaction.commit();
@@ -153,11 +159,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        drawerLayout.closeDrawers();
-        getSupportActionBar().setTitle("Inicio");
-        navigationView.getMenu().getItem(0).setChecked(true);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawers();
+        } else {
+            if (sesion.usuarioTieneSesionActiva()) {
+                getSupportActionBar().setTitle("Programa");
+            } else {
+                getSupportActionBar().setTitle("Inicio");
+            }
 
-        super.onBackPressed();
+            navigationView.getMenu().getItem(0).setChecked(true);
+
+            super.onBackPressed();
+        }
     }
 
     @Override

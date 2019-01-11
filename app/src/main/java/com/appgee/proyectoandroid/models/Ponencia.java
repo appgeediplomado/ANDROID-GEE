@@ -17,6 +17,9 @@ public class Ponencia implements Serializable {
     private String hora;
     private String lugar;
     private Boolean agendada = false;
+    private int calidadPonencia;
+    private int experienciaPonente;
+    private int relevanciaPonencia;
 
     public Ponencia() {
 
@@ -92,5 +95,29 @@ public class Ponencia implements Serializable {
 
     public void setAgendada(Boolean agendada) {
         this.agendada = agendada;
+    }
+
+    public int getCalidadPonencia() {
+        return calidadPonencia;
+    }
+
+    public void setCalidadPonencia(int calidadPonencia) {
+        this.calidadPonencia = calidadPonencia;
+    }
+
+    public int getExperienciaPonente() {
+        return experienciaPonente;
+    }
+
+    public void setExperienciaPonente(int experienciaPonente) {
+        this.experienciaPonente = experienciaPonente;
+    }
+
+    public int getRelevanciaPonencia() {
+        return relevanciaPonencia;
+    }
+
+    public void setRelevanciaPonencia(int relevanciaPonencia) {
+        this.relevanciaPonencia = relevanciaPonencia;
     }
 }
