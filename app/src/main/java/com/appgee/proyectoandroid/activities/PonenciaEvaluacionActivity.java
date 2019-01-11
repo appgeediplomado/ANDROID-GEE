@@ -2,6 +2,7 @@ package com.appgee.proyectoandroid.activities;
 
 import android.app.DownloadManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,6 +92,10 @@ public class PonenciaEvaluacionActivity extends BaseActivity {
                                         Interactor.crearBD(PonenciaEvaluacionActivity.this);
                                         Interactor.guardarPonencia(ponencia);
 
+                                        Intent intent = getIntent();
+                                        intent.putExtra("ponencia", ponencia);
+                                        setResult(RESULT_OK, intent);
+
                                         AlertDialog.Builder builder = new AlertDialog.Builder(PonenciaEvaluacionActivity.this, R.style.Theme_AppCompat_Light_Dialog_Alert);
                                         builder.setTitle("GEE")
                                                 .setMessage("Muchas gracias por su retroalimentación")
@@ -98,6 +103,7 @@ public class PonenciaEvaluacionActivity extends BaseActivity {
                                                 .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
                                                         dialog.cancel();
+                                                        finish();
                                                     }
                                                 });
                                         AlertDialog alert = builder.create();

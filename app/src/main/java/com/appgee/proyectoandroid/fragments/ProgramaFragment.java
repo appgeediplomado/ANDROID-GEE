@@ -3,8 +3,11 @@ package com.appgee.proyectoandroid.fragments;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,14 +19,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.activities.PonenciaEvaluacionActivity;
 import com.appgee.proyectoandroid.adapters.ProgramaAdapter;
 import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponencia;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +60,8 @@ public class ProgramaFragment extends Fragment {
         rvPrograma.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rvPrograma.setLayoutManager(manager);
 
+        final Fragment fragment = this;
+
         Interactor.crearBD(getContext());
         Interactor.obtenerPonencias(getContext(), new ServerCallback<Ponencia>() {
             @Override
@@ -61,7 +70,7 @@ public class ProgramaFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter = new ProgramaAdapter(ponencias);
+                            adapter = new ProgramaAdapter(fragment, ponencias);
                             rvPrograma.setAdapter(adapter);
                         }
                     });
@@ -74,6 +83,7 @@ public class ProgramaFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem searchItem = menu.findItem(R.id.item_buscar);
@@ -103,5 +113,16 @@ public class ProgramaFragment extends Fragment {
         }
 
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == 84) {
+            Ponencia ponencia = (Ponencia) data.getExtras().getSerializable("ponencia");
+
+            adapter.actualizaPonencia(ponencia);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

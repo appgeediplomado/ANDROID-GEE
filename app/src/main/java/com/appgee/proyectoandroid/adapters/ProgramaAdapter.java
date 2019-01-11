@@ -1,8 +1,11 @@
 package com.appgee.proyectoandroid.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,10 +32,44 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
     private List<Ponencia> ponencias;
     private List<Ponencia> ponenciasFiltradas;
     private RecyclerView recyclerView;
+    private Fragment fragment;
 
-    public ProgramaAdapter(List<Ponencia> ponencias) {
+    public ProgramaAdapter(Fragment fragment, List<Ponencia> ponencias) {
+        this.fragment = fragment;
         this.ponencias = ponencias;
         this.ponenciasFiltradas = new ArrayList<>(ponencias);
+    }
+
+    public void actualizaPonencia(Ponencia ponencia) {
+        // Actualizar ponencia en la lista total de ponencias
+        Integer indice = -1;
+
+        for (int i = 0; i <  ponencias.size(); i++) {
+            if (ponencias.get(i).getId() == ponencia.getId()) {
+                indice = i;
+                break;
+            }
+        }
+
+        if (indice != -1) {
+            ponencias.set(indice, ponencia);
+        }
+
+        // Actualizar ponencia en la lista filtrada de ponencias
+        indice = -1;
+
+         for (int i = 0; i < ponenciasFiltradas.size(); i++) {
+             if (ponenciasFiltradas.get(i).getId() == ponencia.getId()) {
+                 indice = i;
+                 break;
+             }
+         }
+
+         if (indice != -1) {
+             ponenciasFiltradas.set(indice, ponencia);
+         }
+
+        notifyDataSetChanged();
     }
 
     @Override
@@ -64,10 +101,10 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         viewHolder.btnPonenciaCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(view.getContext(), PonenciaEvaluacionActivity.class);
+                Intent intent = new Intent(view.getContext(), PonenciaEvaluacionActivity.class);
 
-            intent.putExtra("ponencia", ponencia);
-            view.getContext().startActivity(intent);
+                intent.putExtra("ponencia", ponencia);
+                fragment.startActivityForResult(intent, 84);
             }
         });
         
@@ -91,7 +128,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
 
         Intent intent = new Intent(view.getContext(), PonenciaDetalleActivity.class);
         intent.putExtra("ponencia", ponencia);
-        view.getContext().startActivity(intent);
+        fragment.startActivityForResult(intent, 84);
     }
 
     class PonenciaViewHolder extends RecyclerView.ViewHolder {

@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@drawable/logo_gee"
+        android:icon="@drawable/icono_gee"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
