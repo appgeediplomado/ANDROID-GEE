@@ -68,7 +68,7 @@ public class PonenciaDetalleActivity extends BaseActivity {
             btnAgendarPonencia.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Utils.agendarEvento(v.getContext(), ponencia.getTitulo(), ponencia.getLugar(), ponencia.getFecha(), ponencia.getHora());
+                    Utils.agendarPonencia(ponencia, v.getContext());
                 }
             });
 

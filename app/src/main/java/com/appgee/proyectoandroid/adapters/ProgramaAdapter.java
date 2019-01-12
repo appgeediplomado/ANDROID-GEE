@@ -19,6 +19,7 @@ import com.appgee.proyectoandroid.R;
 import com.appgee.proyectoandroid.Utils.Utils;
 import com.appgee.proyectoandroid.activities.PonenciaDetalleActivity;
 import com.appgee.proyectoandroid.activities.PonenciaEvaluacionActivity;
+import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponencia;
 
 import java.text.ParseException;
@@ -111,7 +112,10 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Ponenc
         viewHolder.btnPonenciaAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.agendarEvento(view.getContext(), ponencia.getTitulo(), ponencia.getLugar(), ponencia.getFecha(), ponencia.getHora());
+                Utils.agendarPonencia(ponencia, view.getContext());
+
+                Interactor.crearBD(view.getContext());
+                Interactor.guardarPonencia(ponencia);
             }
         });
     }

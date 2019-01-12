@@ -18,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class VolleyService {
     private Context context;
@@ -69,8 +73,26 @@ public class VolleyService {
                                 ponencia.setTitulo(data.getString("titulo"));
                                 ponencia.setModalidad(data.getString("modalidad"));
                                 ponencia.setNombrePonente(data.getString("nombrePonente"));
-                                ponencia.setFecha(data.getString("fecha"));
-                                ponencia.setHora(data.getString("hora"));
+
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("es", "MX"));
+                                try {
+                                    Date fecha = sdf.parse(data.getString("fecha"));
+                                    sdf.applyPattern("EEEE dd 'de' MMMM 'de' yyyy");
+                                    ponencia.setFecha(sdf.format(fecha));
+
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                                sdf.applyPattern("HH:mm:ss");
+                                try {
+                                    Date hora = sdf.parse(data.getString("hora"));
+                                    sdf.applyPattern("HH:mm");
+                                    ponencia.setHora(sdf.format(hora));
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
                                 ponencia.setLugar(data.getString("lugar"));
 
                                 ponencias.add(ponencia);
