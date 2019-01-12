@@ -7,7 +7,7 @@
     tools:context=".activities.PonenteDetallesActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_imagen_det"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_imagen_det"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Aquí va el nombre" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_imagen_det"
         app:layout_constraintTop_toBottomOf="@+id/tv_nombre_det"
         tools:text="Aquí van los apellidos" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_imagen_det"
         app:layout_constraintTop_toBottomOf="@+id/tv_apellidos_det"
         tools:text="Aquí va la institución" />
 
@@ -56,7 +56,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_imagen_det" />
 
     <TextView
         android:id="@+id/tv_biodata"

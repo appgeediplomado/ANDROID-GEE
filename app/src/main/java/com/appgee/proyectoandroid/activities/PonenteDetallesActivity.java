@@ -3,12 +3,15 @@ package com.appgee.proyectoandroid.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.adapters.PonenteAdapter;
 import com.appgee.proyectoandroid.db.Interactor;
 import com.appgee.proyectoandroid.models.Ponente;
 import com.appgee.proyectoandroid.webservices.ServerCallback;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class PonenteDetallesActivity extends BaseActivity {
     TextView tvApellidos;
     TextView tvInstitucion;
     TextView tvBiodata;
+    ImageView ivImagen;;
 
     Ponente ponente = null;
 
@@ -30,6 +34,7 @@ public class PonenteDetallesActivity extends BaseActivity {
         tvApellidos = findViewById(R.id.tv_apellidos_det);
         tvInstitucion = findViewById(R.id.tv_institucion_det);
         tvBiodata = findViewById(R.id.tv_biodata);
+        ivImagen = findViewById(R.id.iv_imagen_det);
 
         ponente = (Ponente) getIntent().getSerializableExtra("ponente");
 
@@ -38,6 +43,11 @@ public class PonenteDetallesActivity extends BaseActivity {
             tvApellidos.setText(ponente.getApellidos());
             tvInstitucion.setText(ponente.getInstitucion());
             tvBiodata.setText("");
+
+            String fotoUrl = ponente.getFoto();
+            if (!fotoUrl.isEmpty()) {
+                Glide.with(this).load(ponente.getFoto()).into(ivImagen);
+            }
         }
 
         //Se ejecuta asyncronramente la recuperación de los ponentes

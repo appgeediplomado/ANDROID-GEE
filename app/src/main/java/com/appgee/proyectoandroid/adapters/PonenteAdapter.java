@@ -1,5 +1,7 @@
 package com.appgee.proyectoandroid.adapters;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appgee.proyectoandroid.R;
+import com.appgee.proyectoandroid.activities.MainActivity;
 import com.appgee.proyectoandroid.listeners.OnPonenteClickListener;
 import com.appgee.proyectoandroid.models.Ponente;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,6 +26,7 @@ import java.util.List;
 public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
     private List<Ponente> ponentes;
+    private Context context;
 
     //Para llevar los registros filtrados
     private List<Ponente> ponentesFiltrados;
@@ -33,7 +39,7 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private OnPonenteClickListener onPonenteClickListener;
 
-    public PonenteAdapter(List<Ponente> ponentes) {
+    public PonenteAdapter(List<Ponente> ponentes, Context context) {
         if(ponentes == null){
             this.ponentes = new ArrayList<>();
             this.ponentesFiltrados = new ArrayList<>();
@@ -41,6 +47,8 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             this.ponentes = ponentes;
             ponentesFiltrados = new ArrayList<>(ponentes);
         }
+
+        this.context = context;
     }
 
     @Override
@@ -76,6 +84,11 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((PonenteViewHolder) holder).tvNombre.setText(ponenteItem.getNombre());
             ((PonenteViewHolder) holder).tvApellidos.setText(ponenteItem.getApellidos());
             ((PonenteViewHolder) holder).tvInstitucion.setText(ponenteItem.getInstitucion());
+
+            String urlFoto = ponenteItem.getFoto();
+            if (!urlFoto.isEmpty()) {
+                Glide.with(context).load(urlFoto).into(((PonenteViewHolder) holder).ivImagen);
+            }
         } else {
             ((ViewHolderLetter) holder).bind((Ponente) item);
         }
@@ -107,6 +120,7 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView tvNombre;
         protected TextView tvApellidos;
         protected TextView tvInstitucion;
+        protected ImageView ivImagen;
         private Ponente ponente;
 
         private OnPonenteClickListener onPonenteClickListener;
@@ -116,6 +130,7 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             tvNombre = itemView.findViewById(R.id.tv_nombre);
             tvApellidos = itemView.findViewById(R.id.tv_apellidos);
             tvInstitucion = itemView.findViewById(R.id.tv_institucion);
+            ivImagen = itemView.findViewById(R.id.iv_imagen);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

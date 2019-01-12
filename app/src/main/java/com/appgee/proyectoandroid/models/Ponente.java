@@ -38,6 +38,9 @@ public class Ponente implements Serializable {
     @ColumnInfo(name = "biodata")
     private String biodata;
 
+    @ColumnInfo(name = "foto")
+    private String foto;
+
     //Para seccionar el el recyclerView por orden alfabético
     @Ignore
     private int type;
@@ -53,11 +56,12 @@ public class Ponente implements Serializable {
     public Ponente() {
     }
 
-    public Ponente(int id, String nombre, String apellidos, String institucion) {
+    public Ponente(int id, String nombre, String apellidos, String institucion, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.institucion = institucion;
+        this.foto = foto;
     }
 
     public int getId() {
@@ -98,6 +102,14 @@ public class Ponente implements Serializable {
 
     public void setBiodata(String biodata) {
         this.biodata = biodata;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     @Override

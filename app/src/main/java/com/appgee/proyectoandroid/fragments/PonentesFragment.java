@@ -106,7 +106,7 @@ public class PonentesFragment extends Fragment implements OnPonenteClickListener
                             //Lista seccionada alfabeticamente y buscable | Basado en:
                             //https://stackoverflow.com/questions/34142289/display-namelist-in-recyclerview-under-each-letter-in-alphabetic-order-android
                             //https://stackoverflow.com/questions/40683817/how-to-set-two-adapters-to-one-recyclerview
-                            ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(ponentes)));
+                            ponenteAdapter = new PonenteAdapter(addAlphabets(sortList(ponentes)), getContext());
                             ponenteAdapter.setOnPonenteClickListener(PonentesFragment.this);
                             ponentesRecyclerView.setAdapter(ponenteAdapter);
                             ponenteAdapter.notifyDataSetChanged();

@@ -148,14 +148,14 @@ public class Interactor {
                                     JSONArray jsonArray = jsonObject.getJSONArray(llaveConsulta);
                                     for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject jo = jsonArray.getJSONObject(i);
-                                        ponentes.add(new Ponente(jo.getInt("id"), jo.getString("nombre"), jo.getString("apellidos"), jo.getString("institucion")));
+                                        ponentes.add(new Ponente(jo.getInt("id"), jo.getString("nombre"), jo.getString("apellidos"), jo.getString("institucion"), jo.getString("foto")));
                                     }
                                 } else {
                                     //Solo se guarda el registro que encuentre en el WS
                                     ponentes = new ArrayList<>();
                                     Ponente registro;
                                     JSONObject jo = jsonObject.getJSONObject(llaveConsulta);
-                                    registro = new Ponente(jo.getInt("id"), jo.getString("nombre"), jo.getString("apellidos"), jo.getString("institucion"));
+                                    registro = new Ponente(jo.getInt("id"), jo.getString("nombre"), jo.getString("apellidos"), jo.getString("institucion"), jo.getString("foto"));
                                     registro.setBiodata(jo.getString("biodata"));
                                     ponentes.add(registro);
                                 }
