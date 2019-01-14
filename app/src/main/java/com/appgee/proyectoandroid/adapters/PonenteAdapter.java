@@ -88,6 +88,8 @@ public class PonenteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             String urlFoto = ponenteItem.getFoto();
             if (!urlFoto.isEmpty()) {
                 Glide.with(context).load(urlFoto).into(((PonenteViewHolder) holder).ivImagen);
+            } else {
+                ((PonenteViewHolder) holder).ivImagen.setImageResource(R.drawable.ic_usuario);
             }
         } else {
             ((ViewHolderLetter) holder).bind((Ponente) item);
